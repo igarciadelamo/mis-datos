@@ -1,0 +1,13 @@
+<resources>
+
+    <string name="app_name">Mis Datos</string>
+    <string name="enter">Entrar</string>
+    <string name="user">Usuario:</string>
+    <string name="password">Contraseña:</string>
+    <string name="logo">Logo Mis Datos</string>
+    <string name="login">Login</string>
+    <string name="new_account">Crear cuenta</string>
+    <string name="menu_settings">Settings</string>
+    <string name="title_activity_main">MainActivity</string>
+
+</resources>
