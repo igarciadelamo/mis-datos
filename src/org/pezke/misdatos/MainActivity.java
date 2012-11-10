@@ -1,6 +1,7 @@
 package org.pezke.misdatos;
 
 import org.pezke.misdatos.layout.ControlLogin;
+import org.pezke.misdatos.listener.LoginListener;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -12,57 +13,74 @@ import android.view.Menu;
 
 public class MainActivity extends Activity {
 
-	private ControlLogin ctlLogin;
+	/**
+	 * Control
+	 */
+	private ControlLogin controlLogin;
 	
-	@Override
+	/*
+	 * (non-Javadoc)
+	 * @see android.app.Activity#onCreate(android.os.Bundle)
+	 */
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 
-		ctlLogin = (ControlLogin) findViewById(R.id.CtlLogin);
-
-		ctlLogin.setOnLoginListener(new OnLoginListener() {
-			@Override
-			public void onLogin(String usuario, String password) {
-				// Validamos el usuario y la contrase�a
-				if (usuario.equals("demo") && password.equals("demo"))
-					ctlLogin.setMensaje("Login correcto!");
-				else
-					ctlLogin.setMensaje("Vuelva a intentarlo.");
+		controlLogin = (ControlLogin) findViewById(R.id.CtlLogin);
+		controlLogin.setLoginListener(new LoginListener() {
+			
+			/*
+			 * (non-Javadoc)
+			 * @see org.pezke.misdatos.listener.LoginListener#onLogin(java.lang.String, java.lang.String)
+			 */
+			public void onLogin(String user, String password) {
+				boolean check = controlLogin.checkLogin(user, password);
+				if(check){
+					
+				}else{
+					controlLogin.setMessage(R.string.error_login_incorrect);
+				}
 			}
 			
-			@Override
+			/*
+			 * (non-Javadoc)
+			 * @see org.pezke.misdatos.listener.LoginListener#onNewAccount()
+			 */
 			public void onNewAccount() {
 				Intent intent = new Intent(MainActivity.this, RegisterActivity.class);
 				startActivity(intent);
-	
 			}
 		});
 	}
 
-	@Override
+	/*
+	 * (non-Javadoc)
+	 * @see android.app.Activity#onCreateOptionsMenu(android.view.Menu)
+	 */
 	public boolean onCreateOptionsMenu(Menu menu) {
 		getMenuInflater().inflate(R.menu.activity_main, menu);
 		return true;
 	}
 	
-	@Override
+	/*
+	 * (non-Javadoc)
+	 * @see android.app.Activity#onKeyDown(int, android.view.KeyEvent)
+	 */
 	public boolean onKeyDown(int keyCode, KeyEvent event) {
 		if (keyCode == KeyEvent.KEYCODE_BACK) {
 			AlertDialog.Builder builder = createAlertDialog();
 			builder.show();
-			// Si el listener devuelve true, el evento esta
-			// procesado, y nadie debe hacer nada mas
+			// The event has already been processed
 			return true;
 		}
 		
-		// para las demas cosas, se reenvia el evento al listener habitual
+		// In other case, follow the chain events
 		return super.onKeyDown(keyCode, event);
 	}
 	
 	
 	/**
-	 * Creado alert para la gestion del salir de la aplicación
+	 * Create alert to do the logout
 	 */
 	private AlertDialog.Builder createAlertDialog(){
 		AlertDialog.Builder result = new AlertDialog.Builder(this)
@@ -70,25 +88,28 @@ public class MainActivity extends Activity {
 		.setTitle(R.string.back_message)
 		.setMessage(R.string.back_confirmation)
 		
-		//Boton negativo sin listener
+		//Button cancel with no listener
 		.setNegativeButton(android.R.string.cancel, null)
 		
-		//Boton positivo con listener
+		//Button ok with listener
 		.setPositiveButton(android.R.string.ok, createOnClickListener());
 				
 		return result;
 	}
 	
 	/**
-	 * Creado listener para el cuadro de dialogo para salir de la app
+	 * Create listener to finish the activity
 	 */
 	private DialogInterface.OnClickListener createOnClickListener(){
 		DialogInterface.OnClickListener result = 
 			new DialogInterface.OnClickListener() {
 			
-				@Override
+				/*
+				 * (non-Javadoc)
+				 * @see android.content.DialogInterface.OnClickListener#onClick(android.content.DialogInterface, int)
+				 */
 				public void onClick(DialogInterface dialog, int which) {
-					// Salir
+					// Logout
 					MainActivity.this.finish();
 				}
 		};

@@ -1,7 +1,7 @@
 package org.pezke.misdatos.layout;
 
-import org.pezke.misdatos.OnLoginListener;
 import org.pezke.misdatos.R;
+import org.pezke.misdatos.listener.LoginListener;
 
 import android.content.Context;
 import android.util.AttributeSet;
@@ -15,25 +15,25 @@ import android.widget.TextView;
 public class ControlLogin extends LinearLayout {
 
 	//////////////////////////////////
-	// Controles
+	// Controls
 	//////////////////////////////////
 	
 	private EditText txtUser;
 	private EditText txtPassword;
 	private Button btnLogin;
 	private Button btnCreateAccount;
-	private TextView lblMensaje;
+	private TextView message;
 
 	
 	//////////////////////////////////
 	// Listener
 	//////////////////////////////////
 
-	private OnLoginListener listener;
+	private LoginListener listener;
 
 	
 	//////////////////////////////////
-	// Constructores
+	// Constructors
 	//////////////////////////////////
 
 
@@ -46,7 +46,7 @@ public class ControlLogin extends LinearLayout {
 	}
 	
 	/**
-	 * Constructor con atributos
+	 * Constructor with attributes
 	 */
 	public ControlLogin(Context context, AttributeSet attrs) {
 		super(context, attrs);
@@ -55,39 +55,39 @@ public class ControlLogin extends LinearLayout {
 
 	
 	//////////////////////////////////
-	// Metodos auxiliares
+	// Control methods
 	//////////////////////////////////
 	
 	/**
-	 * Inicializacion del control
+	 * Initialize the control
 	 */
 	private void init() {
 		
-		// Utilizamos el layout 'control_login' como interfaz del control
+		// Use the control_login layout
 		String infService = Context.LAYOUT_INFLATER_SERVICE;
 		LayoutInflater li = (LayoutInflater) getContext().getSystemService(infService);
 		li.inflate(R.layout.control_login, this, true);
 
-		// Obtenemoslas referencias a los distintos control
+		// References to all control elements
 		txtUser = (EditText) findViewById(R.id.txtLoginUser);
 		txtPassword = (EditText) findViewById(R.id.txtLoginPassword);
 		btnLogin = (Button) findViewById(R.id.buttonLogin);
 		btnCreateAccount = (Button) findViewById(R.id.buttonNewAccount);
-		lblMensaje = (TextView) findViewById(R.id.labelLoginMessage);
+		message = (TextView) findViewById(R.id.labelLoginMessage);
 
-		// Asociamos los eventos necesarios
+		// Create and manage events
 		manageEvents();
 	}
 
 	/**
-	 * Setter del listener
+	 * Save the reference of the listener
 	 */
-	public void setOnLoginListener(OnLoginListener l) {
+	public void setLoginListener(LoginListener l) {
 		listener = l;
 	}
 
 	/**
-	 * Gestion de eventos
+	 * Manage the events in each button
 	 */
 	private void manageEvents() {
 		btnLogin.setOnClickListener(new OnClickListener() {
@@ -106,11 +106,26 @@ public class ControlLogin extends LinearLayout {
 			}
 		});
 	}
-
+	
+	
 	/**
-	 * Almacenar el mensaje de error
+	 * Show the error message
 	 */
-	public void setMensaje(String msg) {
-		lblMensaje.setText(msg);
+	public void setMessage(String text) {
+		message.setText(text);
+	}
+	
+	/**
+	 * Show the error message
+	 */
+	public void setMessage(int text) {
+		message.setText(text);
+	}
+	
+	/**
+	 * Check the login action
+	 */
+	public boolean checkLogin(String user, String password){
+		return false;
 	}
 }
