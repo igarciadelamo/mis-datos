@@ -7,40 +7,50 @@
   android:orientation="vertical"  
   android:padding="10dip">
   
-  
   	<ImageView
-        android:id="@+id/imageLoginlogo"
+        android:id="@+id/imageRegisterLogo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginBottom="50dip"
-        android:layout_marginTop="40dip"
+        android:layout_marginBottom="20dip"
+        android:layout_marginTop="20dip"
         android:contentDescription="@string/logo"
         android:src="@drawable/candado" />
     
-	<TextView android:id="@+id/txtViewLogin0" 
+	<TextView android:id="@+id/txtViewRegister0" 
 		android:layout_width="wrap_content" 
 		android:layout_height="wrap_content" 
 		android:text="@string/user" 
 		android:textStyle="bold" />
 		
-	<EditText android:id="@+id/txtLoginUser"
+	<EditText android:id="@+id/txtRegisterUser"
 	    android:inputType="textNoSuggestions"
 		android:layout_height="wrap_content" 
 		android:layout_width="fill_parent" />
 	
-	<TextView android:id="@+id/txtViewLogin1" 
+	<TextView android:id="@+id/txtViewRegister1" 
 		android:layout_width="wrap_content" 
 		android:layout_height="wrap_content" 
 		android:text="@string/password" 
 		android:textStyle="bold" />
-		
-	<EditText android:id="@+id/txtLoginPassword"
+	
+	<EditText android:id="@+id/txtRegisterPassword1"
 		android:inputType="textPassword"
 		android:layout_height="wrap_content" 
 		android:layout_width="fill_parent" />
-		
-	<TextView android:id="@+id/labelLoginMessage" 
+	
+	<TextView android:id="@+id/txtViewRegister2" 
+		android:layout_width="wrap_content" 
+		android:layout_height="wrap_content" 
+		android:text="@string/password_repeit" 
+		android:textStyle="bold" />
+	
+	<EditText android:id="@+id/txtRegisterPassword2"
+		android:inputType="textPassword"
+		android:layout_height="wrap_content" 
+		android:layout_width="fill_parent" />
+	
+	<TextView android:id="@+id/labelRegisterMessage" 
 		android:layout_width="wrap_content" 
 		android:layout_height="wrap_content" 
 		android:paddingLeft="10dip" 
@@ -49,9 +59,9 @@
 	<LinearLayout android:orientation="horizontal" 
 		android:layout_width="fill_parent"
   		android:layout_height="fill_parent"
-  		android:paddingTop="20dip" > 
+  		android:paddingTop="5dip" > 
 		
-	    <Button android:id="@+id/buttonLogin"
+	    <Button android:id="@+id/buttonRegister"
 			android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:paddingLeft="30dp"
@@ -63,22 +73,8 @@
             android:background="@drawable/login_button_bg"
             android:layout_gravity="center_horizontal"
             android:layout_width="wrap_content"
-			android:text="@string/login" />
+			android:text="@string/register" />
 			
-		<Button android:id="@+id/buttonNewAccount"
-			android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp"
-            android:paddingTop="10dp"
-            android:paddingBottom="10dp"
-            android:textColor="@drawable/login_button_color"
-            android:textStyle="bold"
-            android:background="@drawable/login_button_bg"
-            android:layout_gravity="center_horizontal"
-            android:layout_width="wrap_content"
-			android:text="@string/new_account" />
-		
 	</LinearLayout>
 	
 </LinearLayout>

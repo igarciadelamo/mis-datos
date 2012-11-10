@@ -7,7 +7,7 @@
     android:layout_height="fill_parent" 
     android:padding="10dip" >
     
-    <org.pezke.misdatos.layout.ControlLogin android:id="@+id/CtlLogin" 
+    <org.pezke.misdatos.layout.ControlRegister android:id="@+id/CtlRegister" 
     	android:layout_width="fill_parent"
     	android:layout_height="wrap_content"
     	android:background="#9998b1" 
