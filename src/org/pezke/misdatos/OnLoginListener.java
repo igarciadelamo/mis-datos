@@ -1,6 +1,8 @@
 package org.pezke.misdatos;
 
-public interface OnLoginListener 
-{
+public interface OnLoginListener {
+	
 	void onLogin(String usuario, String password);
+	
+	void onNewAccount();
 }
