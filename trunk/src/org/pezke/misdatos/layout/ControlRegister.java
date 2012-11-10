@@ -1,7 +1,7 @@
 package org.pezke.misdatos.layout;
 
-import org.pezke.misdatos.OnRegisterListener;
 import org.pezke.misdatos.R;
+import org.pezke.misdatos.listener.RegisterListener;
 
 import android.content.Context;
 import android.util.AttributeSet;
@@ -15,7 +15,7 @@ import android.widget.TextView;
 public class ControlRegister extends LinearLayout {
 
 	//////////////////////////////////
-	// Controles
+	// Controls
 	//////////////////////////////////
 	
 	private EditText txtUser;
@@ -29,7 +29,7 @@ public class ControlRegister extends LinearLayout {
 	// Listener
 	//////////////////////////////////
 
-	private OnRegisterListener listener;
+	private RegisterListener listener;
 
 	
 	//////////////////////////////////
@@ -46,48 +46,48 @@ public class ControlRegister extends LinearLayout {
 	}
 	
 	/**
-	 * Constructor con atributos
+	 * Constructor with attributes
 	 */
 	public ControlRegister(Context context, AttributeSet attrs) {
 		super(context, attrs);
 		init();
 	}
 
-	
+
 	//////////////////////////////////
-	// Metodos auxiliares
+	// Control methods
 	//////////////////////////////////
 	
 	/**
-	 * Inicializacion del control
+	 * Initialize the control
 	 */
 	private void init() {
 		
-		// Utilizamos el layout 'control_login' como interfaz del control
+		// Use the control_login register
 		String infService = Context.LAYOUT_INFLATER_SERVICE;
 		LayoutInflater li = (LayoutInflater) getContext().getSystemService(infService);
 		li.inflate(R.layout.control_register, this, true);
 
-		// Obtenemoslas referencias a los distintos control
+		// References to all control elements
 		txtUser = (EditText) findViewById(R.id.txtRegisterUser);
 		txtPassword1 = (EditText) findViewById(R.id.txtRegisterPassword1);
 		txtPassword2 = (EditText) findViewById(R.id.txtRegisterPassword2);
 		btnAccept = (Button) findViewById(R.id.buttonRegister);
-		this.message = (TextView) findViewById(R.id.labelRegisterMessage);
+		message = (TextView) findViewById(R.id.labelRegisterMessage);
 
-		// Asociamos los eventos necesarios
+		// Create and manage events
 		manageEvents();
 	}
 
 	/**
-	 * Setter del listener
+	 * Save the reference of the listener
 	 */
-	public void setOnRegisterListener(OnRegisterListener l) {
+	public void setRegisterListener(RegisterListener l) {
 		listener = l;
 	}
 
 	/**
-	 * Gestion de eventos
+	 * Manage the events in the button
 	 */
 	private void manageEvents() {
 		btnAccept.setOnClickListener(new OnClickListener() {
@@ -102,9 +102,30 @@ public class ControlRegister extends LinearLayout {
 	}
 
 	/**
-	 * Almacenar el mensaje de error
+	 * Show the error message
 	 */
-	public void setMensaje(String msg) {
-		message.setText(msg);
+	public void setMessage(String text) {
+		message.setText(text);
+	}
+	
+	/**
+	 * Show the error message
+	 */
+	public void setMessage(int text) {
+		message.setText(text);
+	}
+
+	/**
+	 * Check the existence of a user with the same login
+	 */
+	public boolean checkUser(String user) {
+		return false;
+	}
+
+	/**
+	 * Check the passwords
+	 */
+	public boolean checkPasswords(String password1, String password2) {
+		return password1.equals(password2);
 	}
 }
