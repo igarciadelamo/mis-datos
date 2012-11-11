@@ -11,8 +11,8 @@
     <string name="register">Aceptar</string>
     
     <string name="error_login_incorrect">Datos incorrectos. Vuelva a intentarlo.</string>
-    <string name="error_register_existent">Ya existe una cuenta creada con ese login.</string>
-    <string name="error_register_different">El valor de la contraseña debe ser el mismo.</string>
+    <string name="error_register_existent">Ya existe una cuenta con ese login.</string>
+    <string name="error_register_different">Las contraseñas son incorrectas.</string>
     
     
     <string name="back_message">Salir</string>

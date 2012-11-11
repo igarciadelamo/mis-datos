@@ -1,5 +1,6 @@
 package org.pezke.misdatos;
 
+import org.pezke.misdatos.dao.DbManager;
 import org.pezke.misdatos.layout.ControlRegister;
 import org.pezke.misdatos.listener.RegisterListener;
 
@@ -14,6 +15,11 @@ public class RegisterActivity extends Activity {
 	 */
 	private ControlRegister controlRegister;
 
+	/**
+	 * DatabaseManager
+	 */
+	private DbManager dbManager;
+	
 	
     /*
      * (non-Javadoc)
@@ -30,12 +36,12 @@ public class RegisterActivity extends Activity {
 			 * (non-Javadoc)
 			 * @see org.pezke.misdatos.listener.RegisterListener#onRegister(java.lang.String, java.lang.String, java.lang.String)
 			 */
-			public void onRegister(String user, String password1, String password2) {
-				boolean check = controlRegister.checkUser(user);
-				if(check){
+			public void onRegister(String login, String password1, String password2) {
+				boolean check = controlRegister.checkLogin(login);
+				if(!check){
 					check = controlRegister.checkPasswords(password1, password2);
 					if(check){
-						
+						controlRegister.addUser(login, password1);
 					}else{
 						controlRegister.setMessage(R.string.error_register_different);
 					}
@@ -45,6 +51,10 @@ public class RegisterActivity extends Activity {
 			}
 			
 		});
+		
+		//Create the database
+		dbManager = new DbManager(this, DbManager.DB_NAME, null, 1);
+		controlRegister.setDbManager(dbManager);
     }
 
     /*
