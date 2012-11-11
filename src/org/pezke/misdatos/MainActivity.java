@@ -1,5 +1,6 @@
 package org.pezke.misdatos;
 
+import org.pezke.misdatos.dao.DbManager;
 import org.pezke.misdatos.layout.ControlLogin;
 import org.pezke.misdatos.listener.LoginListener;
 
@@ -14,9 +15,15 @@ import android.view.Menu;
 public class MainActivity extends Activity {
 
 	/**
-	 * Control
+	 * Activity Control
 	 */
 	private ControlLogin controlLogin;
+
+	/**
+	 * DatabaseManager
+	 */
+	private DbManager dbManager;
+	
 	
 	/*
 	 * (non-Javadoc)
@@ -51,7 +58,12 @@ public class MainActivity extends Activity {
 				startActivity(intent);
 			}
 		});
+		
+		//Create the database
+		dbManager = new DbManager(this, DbManager.DB_NAME, null, 1);
+		controlLogin.setDbManager(dbManager);
 	}
+
 
 	/*
 	 * (non-Javadoc)

@@ -1,6 +1,8 @@
 package org.pezke.misdatos.layout;
 
 import org.pezke.misdatos.R;
+import org.pezke.misdatos.dao.DbManager;
+import org.pezke.misdatos.dao.UserDao;
 import org.pezke.misdatos.listener.LoginListener;
 
 import android.content.Context;
@@ -28,8 +30,13 @@ public class ControlLogin extends LinearLayout {
 	//////////////////////////////////
 	// Listener
 	//////////////////////////////////
-
 	private LoginListener listener;
+	
+	
+	//////////////////////////////////
+	// Database Manager
+	//////////////////////////////////
+	private DbManager dbManager;
 
 	
 	//////////////////////////////////
@@ -82,8 +89,16 @@ public class ControlLogin extends LinearLayout {
 	/**
 	 * Save the reference of the listener
 	 */
-	public void setLoginListener(LoginListener l) {
-		listener = l;
+	public void setLoginListener(LoginListener listener) {
+		this.listener = listener;
+	}
+	
+
+	/**
+	 * Save the reference of the database manager
+	 */
+	public void setDbManager(DbManager dbManager){
+		this.dbManager = dbManager;
 	}
 
 	/**
@@ -116,7 +131,7 @@ public class ControlLogin extends LinearLayout {
 	}
 	
 	/**
-	 * Show the error message
+	 * Show the error messageuser
 	 */
 	public void setMessage(int text) {
 		message.setText(text);
@@ -125,7 +140,9 @@ public class ControlLogin extends LinearLayout {
 	/**
 	 * Check the login action
 	 */
-	public boolean checkLogin(String user, String password){
-		return false;
+	public boolean checkLogin(String login, String password){
+		UserDao dao = new UserDao(this.dbManager);
+		boolean result = dao.checkByLoginAndPassword(login, password);
+		return result;
 	}
 }

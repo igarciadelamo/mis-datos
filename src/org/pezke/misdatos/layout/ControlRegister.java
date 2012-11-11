@@ -1,6 +1,8 @@
 package org.pezke.misdatos.layout;
 
 import org.pezke.misdatos.R;
+import org.pezke.misdatos.dao.DbManager;
+import org.pezke.misdatos.dao.UserDao;
 import org.pezke.misdatos.listener.RegisterListener;
 
 import android.content.Context;
@@ -30,6 +32,12 @@ public class ControlRegister extends LinearLayout {
 	//////////////////////////////////
 
 	private RegisterListener listener;
+
+
+	//////////////////////////////////
+	// Database Manager
+	//////////////////////////////////
+	private DbManager dbManager;
 
 	
 	//////////////////////////////////
@@ -86,6 +94,15 @@ public class ControlRegister extends LinearLayout {
 		listener = l;
 	}
 
+	
+	/**
+	 * Save the reference of the database manager
+	 */
+	public void setDbManager(DbManager dbManager){
+		this.dbManager = dbManager;
+	}
+	
+	
 	/**
 	 * Manage the events in the button
 	 */
@@ -118,14 +135,29 @@ public class ControlRegister extends LinearLayout {
 	/**
 	 * Check the existence of a user with the same login
 	 */
-	public boolean checkUser(String user) {
-		return false;
+	public boolean checkLogin(String login) {
+		UserDao dao = new UserDao(this.dbManager);
+		boolean result = dao.checkByLogin(login);
+		return result;
 	}
 
 	/**
 	 * Check the passwords
 	 */
 	public boolean checkPasswords(String password1, String password2) {
-		return password1.equals(password2);
+		boolean result = false;
+		if(password1!=null && !password1.equals("") && password2!=null && 
+		   !password2.equals("") && password1.equals(password2)){
+			result = true;
+		}
+		return result;
+	}
+
+	/**
+	 * Create the new user
+	 */
+	public void addUser(String login, String password) {
+		UserDao dao = new UserDao(this.dbManager);
+		dao.save(login, password);
 	}
 }
