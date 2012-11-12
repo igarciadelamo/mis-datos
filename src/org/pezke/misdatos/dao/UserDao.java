@@ -3,7 +3,7 @@ package org.pezke.misdatos.dao;
 import java.util.Date;
 
 import org.pezke.misdatos.model.User;
-import org.pezke.misdatos.utl.PasswordUtils;
+import org.pezke.misdatos.util.PasswordUtils;
 
 import android.content.ContentValues;
 import android.database.Cursor;

@@ -1,4 +1,4 @@
-package org.pezke.misdatos.utl;
+package org.pezke.misdatos.util;
 
 import org.pezke.misdatos.model.User;
 
