@@ -3,6 +3,7 @@ package org.pezke.misdatos.dao;
 import java.util.Date;
 
 import org.pezke.misdatos.model.User;
+import org.pezke.misdatos.util.Password;
 import org.pezke.misdatos.util.PasswordUtils;
 
 import android.content.ContentValues;
@@ -47,25 +48,11 @@ public class UserDao extends Dao {
 	 * Check if there is a user with the same login and password 
 	 */
 	public boolean checkByLoginAndPassword(String login, String password){
-		
 		boolean result = false;
-		
-		//Db Connector
-		SQLiteDatabase db = getDbReader();
-		if(db != null){
-			//Query
-			String key = PasswordUtils.encode(login, password);
-			String[] args = new String[] {login, key};
-			Cursor c = db.query(User.TABLE_NAME, User.FIELDS, 
-					User.WHERE_LOGIN_PASS, args, null, null, null);
-			if (c.moveToFirst()) {
-				result = true;
-			}
-			
-			//Close the connection
-			db.close();
+		User user = getByLogin(login);
+		if(user!=null){
+			result = PasswordUtils.comparePassword(password, user);
 		}
-		
 		return result;
 	}
 	
@@ -90,10 +77,14 @@ public class UserDao extends Dao {
 		SQLiteDatabase db = getDbWriter();
 		if(db != null){
 			
+			//Encode the password
+			Password passwordHash = PasswordUtils.encode(password);
+						
 			//Insert the new register
 			ContentValues cv = new ContentValues();
 			cv.put(User.LOGIN, login);
-			cv.put(User.PASSWORD, PasswordUtils.encode(login, password));
+			cv.put(User.SALT, passwordHash.getSalt());
+			cv.put(User.PASSWORD, passwordHash.getHash());
 			cv.put(User.DATE, new Date().getTime());
 			db.insert(User.TABLE_NAME, null, cv);
 
