@@ -18,7 +18,7 @@ public class User implements Serializable {
 	
 	/** Sentence to create the table */
 	public static final String DELETE_TABLE = 
-		"DROP TABLE mis_datos_user_";
+		"DROP TABLE IF EXISTS mis_datos_user_";
 	
 	/** Querys */
 	public static final String TABLE_NAME = "mis_datos_user_";

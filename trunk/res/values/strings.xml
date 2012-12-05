@@ -9,7 +9,9 @@
     <string name="new_account">Crear cuenta</string>
     <string name="password_repeit">Repetir contraseña:</string>
     <string name="register">Aceptar</string>
+    <string name="backToLogin">Volver</string>
     
+    <string name="success_register">La cuenta se ha creado correctamente</string>
     <string name="error_login_incorrect">Datos incorrectos. Vuelva a intentarlo.</string>
     <string name="error_register_existent">Ya existe una cuenta con ese login.</string>
     <string name="error_register_different">Las contraseñas son incorrectas.</string>

@@ -75,7 +75,20 @@
             android:layout_gravity="center_horizontal"
             android:layout_width="wrap_content"
 			android:text="@string/register" />
-			
+
+		<Button android:id="@+id/buttonBackToLogin"
+			android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:paddingLeft="30dp"
+            android:paddingRight="30dp"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:textColor="@drawable/login_button_color"
+            android:textStyle="bold"
+            android:background="@drawable/login_button_bg"
+            android:layout_gravity="center_horizontal"
+            android:layout_width="wrap_content"
+			android:text="@string/backToLogin" />			
 	</LinearLayout>
 	
 </LinearLayout>
