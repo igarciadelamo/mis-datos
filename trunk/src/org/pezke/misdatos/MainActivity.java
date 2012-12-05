@@ -60,7 +60,7 @@ public class MainActivity extends Activity {
 		});
 		
 		//Create the database
-		dbManager = new DbManager(this, DbManager.DB_NAME, null, 1);
+		dbManager = new DbManager(this, DbManager.DB_NAME, null, DbManager.DB_VERSION);
 		controlLogin.setDbManager(dbManager);
 	}
 
