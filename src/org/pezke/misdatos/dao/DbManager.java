@@ -53,6 +53,7 @@ public class DbManager extends SQLiteOpenHelper {
 	public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion){
 		if(oldVersion<newVersion){
 			db.execSQL(User.DELETE_TABLE);
+			db.execSQL(User.CREATE_TABLE);
 		}
 	}
 

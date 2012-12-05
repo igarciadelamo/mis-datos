@@ -5,6 +5,7 @@ import org.pezke.misdatos.layout.ControlRegister;
 import org.pezke.misdatos.listener.RegisterListener;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 
@@ -42,6 +43,7 @@ public class RegisterActivity extends Activity {
 					check = controlRegister.checkPasswords(password1, password2);
 					if(check){
 						controlRegister.addUser(login, password1);
+						controlRegister.setInfoMessage(R.string.success_register);
 					}else{
 						controlRegister.setMessage(R.string.error_register_different);
 					}
@@ -49,6 +51,17 @@ public class RegisterActivity extends Activity {
 					controlRegister.setMessage(R.string.error_register_existent);
 				}
 			}
+
+			/*
+			 * (non-Javadoc)
+			 * @see org.pezke.misdatos.listener.RegisterListener#backToLogin()
+			 */
+			public void backToLogin() {
+				Intent intent = new Intent(RegisterActivity.this, MainActivity.class);
+				startActivity(intent);
+			}
+			
+			
 			
 		});
 		

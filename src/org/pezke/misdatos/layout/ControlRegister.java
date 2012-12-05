@@ -6,6 +6,7 @@ import org.pezke.misdatos.dao.UserDao;
 import org.pezke.misdatos.listener.RegisterListener;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -24,6 +25,7 @@ public class ControlRegister extends LinearLayout {
 	private EditText txtPassword1;
 	private EditText txtPassword2;
 	private Button btnAccept;
+	private Button btnBack;
 	private TextView message;
 
 	
@@ -81,6 +83,7 @@ public class ControlRegister extends LinearLayout {
 		txtPassword1 = (EditText) findViewById(R.id.txtRegisterPassword1);
 		txtPassword2 = (EditText) findViewById(R.id.txtRegisterPassword2);
 		btnAccept = (Button) findViewById(R.id.buttonRegister);
+		btnBack = (Button) findViewById(R.id.buttonBackToLogin);
 		message = (TextView) findViewById(R.id.labelRegisterMessage);
 
 		// Create and manage events
@@ -116,6 +119,13 @@ public class ControlRegister extends LinearLayout {
 						txtPassword2.getText().toString());
 			}
 		});
+		
+		btnBack.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				listener.backToLogin();
+			}
+		});
 	}
 
 	/**
@@ -129,6 +139,15 @@ public class ControlRegister extends LinearLayout {
 	 * Show the error message
 	 */
 	public void setMessage(int text) {
+		message.setTextColor(Color.RED);
+		message.setText(text);
+	}
+	
+	/**
+	 * Show the info message
+	 */
+	public void setInfoMessage(int text) {
+		message.setTextColor(Color.BLUE);
 		message.setText(text);
 	}
 
