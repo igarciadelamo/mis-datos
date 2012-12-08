@@ -1,3 +1,4 @@
+
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="org.pezke.misdatos"
     android:versionCode="1"
@@ -16,13 +17,16 @@
             android:label="@string/title_activity_main" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
             android:name=".RegisterActivity"
             android:label="@string/title_activity_register" >
+        </activity>
+        <activity
+            android:name=".DataActivity"
+            android:label="@string/title_activity_data" >
         </activity>
     </application>
 

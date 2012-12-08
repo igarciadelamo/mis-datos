@@ -43,7 +43,8 @@ public class MainActivity extends Activity {
 			public void onLogin(String user, String password) {
 				boolean check = controlLogin.checkLogin(user, password);
 				if(check){
-					
+					Intent intent = new Intent(MainActivity.this, DataActivity.class);
+					startActivity(intent);
 				}else{
 					controlLogin.setMessage(R.string.error_login_incorrect);
 				}

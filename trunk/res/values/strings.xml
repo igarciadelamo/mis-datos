@@ -1,6 +1,7 @@
 <resources>
 
     <string name="app_name">Mis Datos</string>
+    
     <string name="enter">Entrar</string>
     <string name="user">Usuario:</string>
     <string name="password">Contraseña:</string>
@@ -10,12 +11,12 @@
     <string name="password_repeit">Repetir contraseña:</string>
     <string name="register">Aceptar</string>
     <string name="backToLogin">Volver</string>
+    <string name="titleData">Lista de todos los datos almacenados</string>
     
     <string name="success_register">La cuenta se ha creado correctamente</string>
     <string name="error_login_incorrect">Datos incorrectos. Vuelva a intentarlo.</string>
     <string name="error_register_existent">Ya existe una cuenta con ese login.</string>
     <string name="error_register_different">Las contraseñas son incorrectas.</string>
-    
     
     <string name="back_message">Salir</string>
     <string name="back_confirmation">¿Desea salir de la aplicación?</string>
@@ -24,5 +25,6 @@
     
     <string name="title_activity_main">Mis Datos</string>
     <string name="title_activity_register">Crear cuenta</string>
+    <string name="title_activity_data">Listado de Mis Datos</string>
 
 </resources>
