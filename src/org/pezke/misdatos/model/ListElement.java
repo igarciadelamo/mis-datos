@@ -2,7 +2,7 @@ package org.pezke.misdatos.model;
 
 import java.io.Serializable;
 
-public class DataElement implements Serializable {
+public class ListElement implements Serializable {
 
 	/** UUID */
 	private static final long serialVersionUID = 1L;
@@ -10,6 +10,17 @@ public class DataElement implements Serializable {
 	/** Attributes */
 	private String name = null;
 	private String description = null;
+
+	/**
+	 * Constructor
+	 * @param name
+	 * @param description
+	 */
+	public ListElement(String name, String description) {
+		super();
+		this.name = name;
+		this.description = description;
+	}
 
 	/**
 	 * @return the name
