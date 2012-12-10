@@ -9,17 +9,25 @@ public class ListElement implements Serializable {
 	
 	/** Attributes */
 	private String name = null;
-	private String description = null;
+	private String numAccess = null;
+	private String lastAccess = null;
+	
+	
+	/**
+	 * Constructor
+	 */
+	public ListElement(String name) {
+		this.name = name;
+	}
+	
 
 	/**
 	 * Constructor
-	 * @param name
-	 * @param description
 	 */
-	public ListElement(String name, String description) {
-		super();
+	public ListElement(String name, String numAccess, String lastAccess) {
 		this.name = name;
-		this.description = description;
+		this.numAccess = numAccess;
+		this.lastAccess = lastAccess;
 	}
 
 	/**
@@ -37,19 +45,37 @@ public class ListElement implements Serializable {
 		this.name = name;
 	}
 
-	/**
-	 * @return the description
-	 */
-	public String getDescription() {
-		return description;
-	}
 
 	/**
-	 * @param description
-	 *            the description to set
+	 * @return the numAccess
 	 */
-	public void setDescription(String description) {
-		this.description = description;
+	public String getNumAccess() {
+		return numAccess;
 	}
+
+
+	/**
+	 * @param numAccess the numAccess to set
+	 */
+	public void setNumAccess(String numAccess) {
+		this.numAccess = numAccess;
+	}
+
+
+	/**
+	 * @return the lastAccess
+	 */
+	public String getLastAccess() {
+		return lastAccess;
+	}
+
+
+	/**
+	 * @param lastAccess the lastAccess to set
+	 */
+	public void setLastAccess(String lastAccess) {
+		this.lastAccess = lastAccess;
+	}
+
 
 }
