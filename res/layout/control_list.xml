@@ -6,16 +6,22 @@
   android:layout_height="wrap_content"
   android:orientation="vertical">
   
-<TextView android:id="@+id/LblTitulo" 
+<TextView android:id="@+id/textDataName" 
 	android:layout_width="fill_parent" 
 	android:layout_height="wrap_content" 
 	android:textStyle="bold" 
 	android:textSize="20dp" />
 	
-<TextView android:id="@+id/LblSubTitulo" 
+<TextView android:id="@+id/textDataLabel1" 
 	android:layout_width="fill_parent" 
 	android:layout_height="wrap_content" 
 	android:textStyle="normal" 
 	android:textSize="12dp" />
-	
+
+<TextView android:id="@+id/textDataLabel2" 
+	android:layout_width="fill_parent" 
+	android:layout_height="wrap_content" 
+	android:textStyle="normal" 
+	android:textSize="12dp" />
+
 </LinearLayout>

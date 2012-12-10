@@ -1,5 +1,7 @@
 package org.pezke.misdatos;
 
+import java.util.Date;
+
 import org.pezke.misdatos.model.ListElement;
 
 import android.app.Activity;
@@ -8,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -23,10 +26,15 @@ public class DataActivity extends Activity {
      */
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        requestWindowFeature(Window.FEATURE_CUSTOM_TITLE);
         setContentView(R.layout.activity_data);
+        getWindow().setFeatureInt(Window.FEATURE_CUSTOM_TITLE, R.layout.title_data);
         
         for (int i = 1; i <= 25; i++){
-			datos[i - 1] = new ListElement("Título " + i, "Subtítulo largo " + i);
+        	ListElement item = new ListElement("Título " + i);
+        	item.setLastAccess("" + new Date());
+        	item.setNumAccess("" + i);
+			datos[i - 1] = item;
         }
                 
         MyDataAdapter adaptador = new MyDataAdapter(this);
@@ -59,8 +67,9 @@ public class DataActivity extends Activity {
 				item = inflater.inflate(R.layout.control_list, null);
 
 				holder = new ViewHolder();
-				holder.tvName = (TextView) item.findViewById(R.id.LblTitulo);
-				holder.tvDescription = (TextView) item.findViewById(R.id.LblSubTitulo);
+				holder.tvName = (TextView) item.findViewById(R.id.textDataName);
+				holder.tvNumAccess = (TextView) item.findViewById(R.id.textDataLabel1);
+				holder.tvLastAccess = (TextView) item.findViewById(R.id.textDataLabel2);
 
 				item.setTag(holder);
 				
@@ -68,9 +77,10 @@ public class DataActivity extends Activity {
 				holder = (ViewHolder) item.getTag();
 			}
 
-			holder.tvName.setText(datos[position].getName());
-			holder.tvDescription.setText(datos[position].getDescription());
-
+			ListElement data = datos[position];
+			holder.tvName.setText(data.getName());
+			holder.tvLastAccess.setText(data.getLastAccess());
+			holder.tvNumAccess.setText(data.getNumAccess());
 			return (item);
 		}
 	}
@@ -80,7 +90,8 @@ public class DataActivity extends Activity {
      */
 	private static class ViewHolder {
 		protected TextView tvName;
-		protected TextView tvDescription;
+		protected TextView tvLastAccess;
+		protected TextView tvNumAccess;
 	}
     
     
