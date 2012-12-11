@@ -1,7 +1,8 @@
-package org.pezke.misdatos;
+package org.pezke.misdatos.activity;
 
 import java.util.Date;
 
+import org.pezke.misdatos.R;
 import org.pezke.misdatos.model.ListElement;
 
 import android.app.Activity;
