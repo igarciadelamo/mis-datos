@@ -28,6 +28,10 @@
             android:name=".activity.DataActivity"
             android:label="@string/title" >
         </activity>
+        <activity
+            android:name=".activity.ConfigActivity"
+            android:label="@string/title" >
+        </activity>
     </application>
 
 </manifest>

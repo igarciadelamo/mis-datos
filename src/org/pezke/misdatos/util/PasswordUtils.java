@@ -5,11 +5,20 @@ import org.pezke.misdatos.model.User;
 
 public class PasswordUtils {
 
+	
 	/**
 	 * Encode the password
 	 */
 	public static Password encode(String password){
 		String salt = PasswordHasher.getSalt();
+		Password result = PasswordHasher.hash(password, salt);
+		return result;
+	}
+	
+	/**
+	 * Encode the password with salt
+	 */
+	public static Password encode(String password, String salt){
 		Password result = PasswordHasher.hash(password, salt);
 		return result;
 	}

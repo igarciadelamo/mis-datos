@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <PreferenceCategory android:title="@string/menu_config_account" >
+        <Preference
+            android:key="preferencePassword"
+            android:summary="@string/menu_config_password_desc"
+            android:title="@string/menu_config_password" />
+    </PreferenceCategory>
+   
+</PreferenceScreen>

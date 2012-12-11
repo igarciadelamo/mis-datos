@@ -46,10 +46,10 @@ public class RegisterActivity extends Activity {
 						controlRegister.addUser(login, password1);
 						controlRegister.setInfoMessage(R.string.success_register);
 					}else{
-						controlRegister.setMessage(R.string.error_register_different);
+						controlRegister.setMessage(R.string.error_password_different);
 					}
 				}else{
-					controlRegister.setMessage(R.string.error_register_existent);
+					controlRegister.setMessage(R.string.error_login_existent);
 				}
 			}
 
