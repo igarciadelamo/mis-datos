@@ -13,7 +13,9 @@ public class Data implements Serializable {
 	private String login;
 	private String key;
 	private String value;
+	private Integer count;
 	private Date creationDate;
+	private Date lastAccessDate;
 
 	/**
 	 * @return the id
@@ -86,5 +88,33 @@ public class Data implements Serializable {
 	 */
 	public void setValue(String value) {
 		this.value = value;
+	}
+
+	/**
+	 * @return the count
+	 */
+	public Integer getCount() {
+		return count;
+	}
+
+	/**
+	 * @param count the count to set
+	 */
+	public void setCount(Integer count) {
+		this.count = count;
+	}
+
+	/**
+	 * @return the lastAccessDate
+	 */
+	public Date getLastAccessDate() {
+		return lastAccessDate;
+	}
+
+	/**
+	 * @param lastAccessDate the lastAccessDate to set
+	 */
+	public void setLastAccessDate(Date lastAccessDate) {
+		this.lastAccessDate = lastAccessDate;
 	}
 }

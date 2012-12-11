@@ -7,6 +7,7 @@ import org.pezke.misdatos.model.ListElement;
 import org.pezke.misdatos.util.DateUtils;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -128,8 +129,8 @@ public class DataActivity extends Activity {
 			return true;
 
 		case R.id.menu_settings:
-			System.err.println("Opcion 2 pulsada!");
-			//lblMensaje.setText("Opcion 2 pulsada!");
+			Intent intent = new Intent(DataActivity.this, ConfigActivity.class);
+			startActivity(intent);
 			return true;
 
 		default:

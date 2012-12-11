@@ -6,7 +6,8 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent" >
     
-    <org.pezke.misdatos.layout.ControlRegister android:id="@+id/CtlRegister" 
+    <org.pezke.misdatos.layout.ControlRegister 
+        android:id="@+id/CtlRegister" 
     	android:layout_width="fill_parent"
     	android:layout_height="wrap_content"
     	android:background="#9998b1" 

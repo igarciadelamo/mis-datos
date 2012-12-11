@@ -80,18 +80,48 @@ public class UserDao extends Dao {
 			//Encode the password
 			Password passwordHash = PasswordUtils.encode(password);
 						
+			//Creation date
+			Date creationDate = new Date();
+			
 			//Insert the new register
 			ContentValues cv = new ContentValues();
 			cv.put(User.LOGIN, login);
 			cv.put(User.SALT, passwordHash.getSalt());
 			cv.put(User.PASSWORD, passwordHash.getHash());
-			cv.put(User.DATE, new Date().getTime());
+			cv.put(User.DATE, creationDate.getTime());
 			db.insert(User.TABLE_NAME, null, cv);
 
 			//Close the connection
 			db.close();
 		}
-
+	}
+	
+	/**
+	 * Update the password for a existent user
+	 */
+	public void update(String login, String password){
+		
+		//Db Connector
+		SQLiteDatabase db = getDbWriter();
+		if(db != null){
+			
+			User user = getByLogin(login);
+			
+			//Encode the password
+			Password passwordHash = PasswordUtils.encode(password, user.getSalt());
+						
+			//Insert the new register
+			ContentValues cv = new ContentValues();
+			cv.put(User.LOGIN, user.getLogin());
+			cv.put(User.SALT, user.getSalt());
+			cv.put(User.PASSWORD, passwordHash.getHash());
+			cv.put(User.DATE, user.getCreationDate().getTime());
+			String[] args = new String[] {login};
+			db.update(User.TABLE_NAME, cv, User.WHERE_LOGIN, args);
+			
+			//Close the connection
+			db.close();
+		}
 	}
 
 }
