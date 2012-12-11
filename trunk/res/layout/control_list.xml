@@ -4,24 +4,25 @@
   xmlns:android="http://schemas.android.com/apk/res/android"
   android:layout_width="wrap_content"
   android:layout_height="wrap_content"
-  android:orientation="vertical">
+  android:orientation="vertical"
+  android:paddingLeft="5dp">
   
-<TextView android:id="@+id/textDataName" 
-	android:layout_width="fill_parent" 
-	android:layout_height="wrap_content" 
-	android:textStyle="bold" 
-	android:textSize="20dp" />
+	<TextView android:id="@+id/textDataName" 
+		android:layout_width="fill_parent" 
+		android:layout_height="wrap_content" 
+		android:textStyle="bold" 
+		android:textSize="20dp" />
+		
+	<TextView android:id="@+id/textDataLabel1" 
+		android:layout_width="fill_parent" 
+		android:layout_height="wrap_content" 
+		android:textStyle="normal" 
+		android:textSize="12dp" />
 	
-<TextView android:id="@+id/textDataLabel1" 
-	android:layout_width="fill_parent" 
-	android:layout_height="wrap_content" 
-	android:textStyle="normal" 
-	android:textSize="12dp" />
-
-<TextView android:id="@+id/textDataLabel2" 
-	android:layout_width="fill_parent" 
-	android:layout_height="wrap_content" 
-	android:textStyle="normal" 
-	android:textSize="12dp" />
+	<TextView android:id="@+id/textDataLabel2" 
+		android:layout_width="fill_parent" 
+		android:layout_height="wrap_content" 
+		android:textStyle="normal" 
+		android:textSize="12dp" />
 
 </LinearLayout>
