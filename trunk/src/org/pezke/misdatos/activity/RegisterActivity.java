@@ -1,5 +1,6 @@
-package org.pezke.misdatos;
+package org.pezke.misdatos.activity;
 
+import org.pezke.misdatos.R;
 import org.pezke.misdatos.dao.DbManager;
 import org.pezke.misdatos.layout.ControlRegister;
 import org.pezke.misdatos.listener.RegisterListener;
@@ -57,12 +58,10 @@ public class RegisterActivity extends Activity {
 			 * @see org.pezke.misdatos.listener.RegisterListener#backToLogin()
 			 */
 			public void backToLogin() {
-				Intent intent = new Intent(RegisterActivity.this, MainActivity.class);
+				Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
 				startActivity(intent);
 			}
-			
-			
-			
+		
 		});
 		
 		//Create the database

@@ -1,5 +1,6 @@
-package org.pezke.misdatos;
+package org.pezke.misdatos.activity;
 
+import org.pezke.misdatos.R;
 import org.pezke.misdatos.dao.DbManager;
 import org.pezke.misdatos.layout.ControlLogin;
 import org.pezke.misdatos.listener.LoginListener;
@@ -12,7 +13,7 @@ import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.Menu;
 
-public class MainActivity extends Activity {
+public class LoginActivity extends Activity {
 
 	/**
 	 * Activity Control
@@ -43,7 +44,7 @@ public class MainActivity extends Activity {
 			public void onLogin(String user, String password) {
 				boolean check = controlLogin.checkLogin(user, password);
 				if(check){
-					Intent intent = new Intent(MainActivity.this, DataActivity.class);
+					Intent intent = new Intent(LoginActivity.this, DataActivity.class);
 					startActivity(intent);
 				}else{
 					controlLogin.setMessage(R.string.error_login_incorrect);
@@ -55,7 +56,7 @@ public class MainActivity extends Activity {
 			 * @see org.pezke.misdatos.listener.LoginListener#onNewAccount()
 			 */
 			public void onNewAccount() {
-				Intent intent = new Intent(MainActivity.this, RegisterActivity.class);
+				Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
 				startActivity(intent);
 			}
 		});
@@ -71,7 +72,7 @@ public class MainActivity extends Activity {
 	 * @see android.app.Activity#onCreateOptionsMenu(android.view.Menu)
 	 */
 	public boolean onCreateOptionsMenu(Menu menu) {
-		getMenuInflater().inflate(R.menu.activity_main, menu);
+		getMenuInflater().inflate(R.menu.activity_login, menu);
 		return true;
 	}
 	
@@ -123,7 +124,7 @@ public class MainActivity extends Activity {
 				 */
 				public void onClick(DialogInterface dialog, int which) {
 					// Logout
-					MainActivity.this.finish();
+					LoginActivity.this.finish();
 				}
 		};
 		
