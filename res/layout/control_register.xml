@@ -21,7 +21,8 @@
 		android:layout_width="wrap_content" 
 		android:layout_height="wrap_content" 
 		android:text="@string/user" 
-		android:textStyle="bold" />
+		android:textStyle="bold"
+		android:textColor="#000000" />
 		
 	<EditText android:id="@+id/txtRegisterUser"
 	    android:inputType="textNoSuggestions"
@@ -32,7 +33,8 @@
 		android:layout_width="wrap_content" 
 		android:layout_height="wrap_content" 
 		android:text="@string/password" 
-		android:textStyle="bold" />
+		android:textStyle="bold"
+		android:textColor="#000000" />
 	
 	<EditText android:id="@+id/txtRegisterPassword1"
 		android:inputType="textPassword"
@@ -43,7 +45,8 @@
 		android:layout_width="wrap_content" 
 		android:layout_height="wrap_content" 
 		android:text="@string/password_repeit" 
-		android:textStyle="bold" />
+		android:textStyle="bold"
+		android:textColor="#000000" />
 	
 	<EditText android:id="@+id/txtRegisterPassword2"
 		android:inputType="textPassword"

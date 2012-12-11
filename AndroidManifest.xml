@@ -14,7 +14,7 @@
         android:theme="@style/TitleTheme" >
         <activity
             android:name=".activity.LoginActivity"
-            android:label="@string/title_activity_main" >
+            android:label="@string/title" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -22,11 +22,11 @@
         </activity>
         <activity
             android:name=".activity.RegisterActivity"
-            android:label="@string/title_activity_register" >
+            android:label="@string/title" >
         </activity>
         <activity
             android:name=".activity.DataActivity"
-            android:label="@string/title_activity_data" >
+            android:label="@string/title" >
         </activity>
     </application>
 

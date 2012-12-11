@@ -11,7 +11,7 @@
     <string name="password_repeit">Repetir contraseña:</string>
     <string name="register">Aceptar</string>
     <string name="backToLogin">Volver</string>
-    <string name="titleData">Lista de todos los datos almacenados</string>
+   
     
     <string name="success_register">La cuenta se ha creado correctamente</string>
     <string name="error_login_incorrect">Datos incorrectos. Vuelva a intentarlo.</string>
@@ -21,10 +21,12 @@
     <string name="back_message">Salir</string>
     <string name="back_confirmation">¿Desea salir de la aplicación?</string>
     
-    <string name="menu_settings">Configuracion</string>
+    <string name="menu_settings">Configuración</string>
+    <string name="menu_addElement">Añadir un nuevo dato</string>
     
-    <string name="title_activity_main">Mis Datos</string>
-    <string name="title_activity_register">Crear cuenta</string>
-    <string name="title_activity_data">Listado de Mis Datos</string>
+    <string name="title">Mis Datos</string>
+    
+    <string name="label_numAccess">Número de accesos: </string>
+    <string name="label_lastAccess">Fecha último acceso: </string>
 
 </resources>

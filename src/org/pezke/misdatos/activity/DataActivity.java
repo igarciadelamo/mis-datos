@@ -4,11 +4,13 @@ import java.util.Date;
 
 import org.pezke.misdatos.R;
 import org.pezke.misdatos.model.ListElement;
+import org.pezke.misdatos.util.DateUtils;
 
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
@@ -19,7 +21,7 @@ import android.widget.TextView;
 public class DataActivity extends Activity {
 
 	//DataList
-	private ListElement[] datos = new ListElement[25];
+	private ListElement[] datos = null;
 	
     /*
      * (non-Javadoc)
@@ -31,10 +33,15 @@ public class DataActivity extends Activity {
         setContentView(R.layout.activity_data);
         getWindow().setFeatureInt(Window.FEATURE_CUSTOM_TITLE, R.layout.title_data);
         
+        String keyLastAccess = getString(R.string.label_lastAccess);
+    	String keyNumAccess  = getString(R.string.label_numAccess);
+    	
+    	datos = new ListElement[0];
+    	datos = new ListElement[25];
         for (int i = 1; i <= 25; i++){
         	ListElement item = new ListElement("Título " + i);
-        	item.setLastAccess("" + new Date());
-        	item.setNumAccess("" + i);
+        	item.setLastAccess(keyLastAccess + DateUtils.formatDateTime(new Date()));
+        	item.setNumAccess(keyNumAccess + i);
 			datos[i - 1] = item;
         }
                 
@@ -77,11 +84,9 @@ public class DataActivity extends Activity {
 			} else {
 				holder = (ViewHolder) item.getTag();
 			}
-
+			
 			ListElement data = datos[position];
-			holder.tvName.setText(data.getName());
-			holder.tvLastAccess.setText(data.getLastAccess());
-			holder.tvNumAccess.setText(data.getNumAccess());
+			holder.completeData(data);
 			return (item);
 		}
 	}
@@ -93,9 +98,45 @@ public class DataActivity extends Activity {
 		protected TextView tvName;
 		protected TextView tvLastAccess;
 		protected TextView tvNumAccess;
+		
+		/**
+		 * Fill the text with the information in data
+		 * @param data ListElement to complete the textviews
+		 */
+		protected void completeData(ListElement data){
+			this.tvName.setText(data.getName());
+			this.tvLastAccess.setText(data.getLastAccess());
+			this.tvNumAccess.setText(data.getNumAccess());
+		}
+		
+		
 	}
     
     
+	/*
+	 * (non-Javadoc)
+	 * @see android.app.Activity#onOptionsItemSelected(android.view.MenuItem)
+	 */
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+
+		switch (item.getItemId()) {
+
+		case R.id.menu_addElement:
+			System.err.println("Opcion 1 pulsada!");
+			//lblMensaje.setText("Opcion 1 pulsada!");
+			return true;
+
+		case R.id.menu_settings:
+			System.err.println("Opcion 2 pulsada!");
+			//lblMensaje.setText("Opcion 2 pulsada!");
+			return true;
+
+		default:
+			return super.onOptionsItemSelected(item);
+		}
+	}
+
 
 
     /*
