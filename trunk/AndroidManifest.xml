@@ -9,7 +9,6 @@
         android:targetSdkVersion="15" />
 
     <application
-        android:name="org.pezke.misdatos.model.GlobalData"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/TitleTheme" >

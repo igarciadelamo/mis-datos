@@ -5,12 +5,15 @@ import org.pezke.misdatos.dao.DbManager;
 import org.pezke.misdatos.dao.UserDao;
 import org.pezke.misdatos.layout.ControlLogin;
 import org.pezke.misdatos.listener.LoginListener;
-import org.pezke.misdatos.model.GlobalData;
+import org.pezke.misdatos.util.CommonConstants;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.Menu;
@@ -31,8 +34,11 @@ public class LoginActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_login);
 		
-		GlobalData globalData = (GlobalData)getApplication();
-		globalData.reset();
+		SharedPreferences preferences = 
+			getSharedPreferences(CommonConstants.DATA, Context.MODE_PRIVATE);
+		Editor editor = preferences.edit();
+		editor.putString(CommonConstants.LOGIN, "");
+		editor.commit();
 
 		controlLogin = (ControlLogin) findViewById(R.id.CtlLogin);
 		controlLogin.setLoginListener(new LoginListener() {
@@ -43,8 +49,11 @@ public class LoginActivity extends Activity {
 			 */
 			public void doLogin(String login) {
 				//Set the login in the application
-				GlobalData globalData = (GlobalData)getApplication();
-				globalData.setLogin(login);
+				SharedPreferences preferences = 
+					getSharedPreferences(CommonConstants.DATA, Context.MODE_PRIVATE);
+				Editor editor = preferences.edit();
+				editor.putString(CommonConstants.LOGIN, login);
+				editor.commit();
 				
 				//Start the new activity
 				Intent intent = new Intent(LoginActivity.this, DataActivity.class);

@@ -4,8 +4,10 @@ import org.pezke.misdatos.R;
 import org.pezke.misdatos.dao.DbManager;
 import org.pezke.misdatos.dao.UserDao;
 import org.pezke.misdatos.layout.PasswordDialog;
-import org.pezke.misdatos.model.GlobalData;
+import org.pezke.misdatos.util.CommonConstants;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceActivity;
 import android.view.Window;
@@ -35,11 +37,12 @@ public class ConfigActivity extends PreferenceActivity {
         userDao = new UserDao(dbManager);
         
         // Get the custom preference
-        GlobalData globalData = (GlobalData)getApplication();
-        String login = globalData.getLogin();
+        SharedPreferences preferences = 
+			getSharedPreferences(CommonConstants.DATA, Context.MODE_PRIVATE);
+		String login = preferences.getString(CommonConstants.LOGIN, "");
         System.err.println("*************************** " + login);
         
-        PasswordDialog preference = (PasswordDialog) findPreference("preferencePassword");
+        PasswordDialog preference = (PasswordDialog) findPreference(CommonConstants.PASSWORD);
         preference.setLogin(login);
     }
     
