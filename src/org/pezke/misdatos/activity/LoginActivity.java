@@ -2,8 +2,10 @@ package org.pezke.misdatos.activity;
 
 import org.pezke.misdatos.R;
 import org.pezke.misdatos.dao.DbManager;
+import org.pezke.misdatos.dao.UserDao;
 import org.pezke.misdatos.layout.ControlLogin;
 import org.pezke.misdatos.listener.LoginListener;
+import org.pezke.misdatos.model.GlobalData;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -20,11 +22,6 @@ public class LoginActivity extends Activity {
 	 */
 	private ControlLogin controlLogin;
 
-	/**
-	 * DatabaseManager
-	 */
-	private DbManager dbManager;
-	
 	
 	/*
 	 * (non-Javadoc)
@@ -33,37 +30,43 @@ public class LoginActivity extends Activity {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_login);
+		
+		GlobalData globalData = (GlobalData)getApplication();
+		globalData.reset();
 
 		controlLogin = (ControlLogin) findViewById(R.id.CtlLogin);
 		controlLogin.setLoginListener(new LoginListener() {
 			
 			/*
 			 * (non-Javadoc)
-			 * @see org.pezke.misdatos.listener.LoginListener#onLogin(java.lang.String, java.lang.String)
+			 * @see org.pezke.misdatos.listener.LoginListener#doLogin(java.lang.String)
 			 */
-			public void onLogin(String user, String password) {
-				boolean check = controlLogin.checkLogin(user, password);
-				if(check){
-					Intent intent = new Intent(LoginActivity.this, DataActivity.class);
-					startActivity(intent);
-				}else{
-					controlLogin.setMessage(R.string.error_login_incorrect);
-				}
+			public void doLogin(String login) {
+				//Set the login in the application
+				GlobalData globalData = (GlobalData)getApplication();
+				globalData.setLogin(login);
+				
+				//Start the new activity
+				Intent intent = new Intent(LoginActivity.this, DataActivity.class);
+				startActivity(intent);
 			}
+			
 			
 			/*
 			 * (non-Javadoc)
-			 * @see org.pezke.misdatos.listener.LoginListener#onNewAccount()
+			 * @see org.pezke.misdatos.listener.BackListener#back()
 			 */
-			public void onNewAccount() {
+			public void back() {
 				Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
 				startActivity(intent);
 			}
+			
 		});
 		
 		//Create the database
-		dbManager = new DbManager(this, DbManager.DB_NAME, null, DbManager.DB_VERSION);
-		controlLogin.setDbManager(dbManager);
+		DbManager dbManager = new DbManager(this, DbManager.DB_NAME, null, DbManager.DB_VERSION);
+		UserDao userDao = new UserDao(dbManager);
+		controlLogin.setUserDao(userDao);
 	}
 
 

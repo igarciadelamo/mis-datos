@@ -83,18 +83,33 @@ public class ControlLogin extends ControlUser {
 		btnAccept.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				listener.onLogin(
-						txtUser.getText().toString(), 
-						txtPassword1.getText().toString());
+				
+				String login = txtUser.getText().toString();
+				String password  = txtPassword1.getText().toString();
+				boolean success = manageLogin(login, password);
+				if(success){
+					listener.doLogin(login);
+				}
 			}
 		});
 		
 		btnBack.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				listener.onNewAccount();
+				listener.back();
 			}
 		});
+	}
+	
+	/**
+	 * Manage the login action
+	 */
+	private boolean manageLogin(String user, String password) {
+		boolean result = checkLogin(user, password);
+		if(!result){
+			setMessage(R.string.error_login_incorrect);
+		}
+		return result;
 	}
 	
 }

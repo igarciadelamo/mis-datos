@@ -37,6 +37,9 @@ public class UserDao extends Dao {
 				result = new User(c);
 			}
 			
+			//Close the cursor
+			c.close();
+			
 			//Close the connection
 			db.close();
 		}
@@ -102,20 +105,16 @@ public class UserDao extends Dao {
 	public void update(String login, String password){
 		
 		//Db Connector
+		User user = getByLogin(login);
 		SQLiteDatabase db = getDbWriter();
 		if(db != null){
-			
-			User user = getByLogin(login);
 			
 			//Encode the password
 			Password passwordHash = PasswordUtils.encode(password, user.getSalt());
 						
 			//Insert the new register
 			ContentValues cv = new ContentValues();
-			cv.put(User.LOGIN, user.getLogin());
-			cv.put(User.SALT, user.getSalt());
 			cv.put(User.PASSWORD, passwordHash.getHash());
-			cv.put(User.DATE, user.getCreationDate().getTime());
 			String[] args = new String[] {login};
 			db.update(User.TABLE_NAME, cv, User.WHERE_LOGIN, args);
 			
@@ -123,5 +122,18 @@ public class UserDao extends Dao {
 			db.close();
 		}
 	}
-
+	
+	
+	/**
+	 * Check the passwords
+	 */
+	public boolean checkPasswords(String password1, String password2) {
+		boolean result = false;
+		if(password1!=null && !password1.equals("") && password2!=null && 
+		   !password2.equals("") && password1.equals(password2)){
+			result = true;
+		}
+		return result;
+	}
+	
 }
