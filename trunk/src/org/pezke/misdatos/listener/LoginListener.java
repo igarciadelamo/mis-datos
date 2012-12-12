@@ -1,14 +1,10 @@
 package org.pezke.misdatos.listener;
 
-public interface LoginListener {
+public interface LoginListener extends BackListener{
 	
 	/**
 	 * Manage the login action by user and password
 	 */
-	void onLogin(String usuario, String password);
+	public void doLogin(String login);
 	
-	/**
-	 * Show the screen to be able to create a new account
-	 */
-	void onNewAccount();
 }

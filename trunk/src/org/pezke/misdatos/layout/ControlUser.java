@@ -1,6 +1,5 @@
 package org.pezke.misdatos.layout;
 
-import org.pezke.misdatos.dao.DbManager;
 import org.pezke.misdatos.dao.UserDao;
 
 import android.content.Context;
@@ -29,9 +28,9 @@ public abstract class ControlUser extends LinearLayout {
 
 	
 	//////////////////////////////////
-	// Database Manager
+	// DAOs
 	//////////////////////////////////
-	private DbManager dbManager;
+	private UserDao userDao;
 
 	
 	//////////////////////////////////
@@ -69,8 +68,8 @@ public abstract class ControlUser extends LinearLayout {
 	/**
 	 * Save the reference of the database manager
 	 */
-	public void setDbManager(DbManager dbManager){
-		this.dbManager = dbManager;
+	public void setUserDao(UserDao userDao){
+		this.userDao = userDao;
 	}
 	
 	/**
@@ -99,8 +98,7 @@ public abstract class ControlUser extends LinearLayout {
 	 * Check the login action
 	 */
 	public boolean checkLogin(String login, String password){
-		UserDao dao = new UserDao(this.dbManager);
-		boolean result = dao.checkByLoginAndPassword(login, password);
+		boolean result = userDao.checkByLoginAndPassword(login, password);
 		return result;
 	}
 	
@@ -109,29 +107,24 @@ public abstract class ControlUser extends LinearLayout {
 	 * Check the existence of a user with the same login
 	 */
 	public boolean checkLogin(String login) {
-		UserDao dao = new UserDao(this.dbManager);
-		boolean result = dao.checkByLogin(login);
+		boolean result = userDao.checkByLogin(login);
 		return result;
 	}
 
-	/**
-	 * Check the passwords
-	 */
-	public boolean checkPasswords(String password1, String password2) {
-		boolean result = false;
-		if(password1!=null && !password1.equals("") && password2!=null && 
-		   !password2.equals("") && password1.equals(password2)){
-			result = true;
-		}
-		return result;
-	}
+	
 
 	/**
 	 * Create the new user
 	 */
 	public void addUser(String login, String password) {
-		UserDao dao = new UserDao(this.dbManager);
-		dao.save(login, password);
+		userDao.save(login, password);
+	}
+	
+	/**
+	 * Check the passwords
+	 */
+	public boolean checkPasswords(String password1, String password2) {
+		return userDao.checkPasswords(password1, password2);
 	}
 	
 }

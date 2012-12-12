@@ -1,7 +1,7 @@
 package org.pezke.misdatos.layout;
 
 import org.pezke.misdatos.R;
-import org.pezke.misdatos.listener.RegisterListener;
+import org.pezke.misdatos.listener.BackListener;
 
 import android.content.Context;
 import android.util.AttributeSet;
@@ -18,7 +18,7 @@ public class ControlRegister extends ControlUser {
 	// Listener
 	//////////////////////////////////
 
-	private RegisterListener listener;
+	private BackListener listener;
 
 
 	//////////////////////////////////
@@ -72,7 +72,7 @@ public class ControlRegister extends ControlUser {
 	/**
 	 * Save the reference of the listener
 	 */
-	public void setRegisterListener(RegisterListener l) {
+	public void setBackListener(BackListener l) {
 		listener = l;
 	}
 
@@ -84,7 +84,7 @@ public class ControlRegister extends ControlUser {
 		btnAccept.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				listener.onRegister(
+				manageRegister(
 						txtUser.getText().toString(), 
 						txtPassword1.getText().toString(),
 						txtPassword2.getText().toString());
@@ -94,9 +94,29 @@ public class ControlRegister extends ControlUser {
 		btnBack.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				listener.backToLogin();
+				listener.back();
 			}
 		});
+	}
+	
+	
+	
+	/**
+	 * Manage the registration process
+	 */
+	public void manageRegister(String login, String password1, String password2) {
+		boolean check = checkLogin(login);
+		if(!check){
+			check = checkPasswords(password1, password2);
+			if(check){
+				addUser(login, password1);
+				setInfoMessage(R.string.success_register);
+			}else{
+				setMessage(R.string.error_password_different);
+			}
+		}else{
+			setMessage(R.string.error_login_existent);
+		}
 	}
 	
 }
