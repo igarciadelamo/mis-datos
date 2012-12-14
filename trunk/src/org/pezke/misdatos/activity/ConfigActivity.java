@@ -33,7 +33,7 @@ public class ConfigActivity extends PreferenceActivity {
         getWindow().setFeatureInt(Window.FEATURE_CUSTOM_TITLE, R.layout.title_data);
         
         //Create the database
-        DbManager dbManager = new DbManager(this, DbManager.DB_NAME, null, DbManager.DB_VERSION);
+        DbManager dbManager = DbManager.getInstance(this);
         userDao = new UserDao(dbManager);
         
         // Get the custom preference

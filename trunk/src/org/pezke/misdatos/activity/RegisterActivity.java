@@ -9,7 +9,6 @@ import org.pezke.misdatos.listener.BackListener;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.Menu;
 
 public class RegisterActivity extends Activity {
 
@@ -42,17 +41,9 @@ public class RegisterActivity extends Activity {
 		});
 		
 		//Create the database
-		DbManager dbManager = new DbManager(this, DbManager.DB_NAME, null, DbManager.DB_VERSION);
+		DbManager dbManager = DbManager.getInstance(this);
 		UserDao userDao = new UserDao(dbManager);
 		controlRegister.setUserDao(userDao);
     }
-
-    /*
-     * (non-Javadoc)
-     * @see android.app.Activity#onCreateOptionsMenu(android.view.Menu)
-     */
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.activity_register, menu);
-        return true;
-    }
+   
 }

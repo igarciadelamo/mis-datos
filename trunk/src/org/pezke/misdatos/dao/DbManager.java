@@ -1,5 +1,6 @@
 package org.pezke.misdatos.dao;
 
+import org.pezke.misdatos.model.Data;
 import org.pezke.misdatos.model.User;
 
 import android.content.Context;
@@ -13,7 +14,7 @@ public class DbManager extends SQLiteOpenHelper {
 	/**
 	 * Version de la base de datos
 	 */
-	public final static int DB_VERSION	= 4;
+	public final static int DB_VERSION	= 6;
 	
 	
 	/**
@@ -21,19 +22,20 @@ public class DbManager extends SQLiteOpenHelper {
 	 */
 	public final static String DB_NAME = "misDatosDb" + DB_VERSION;
 	
-	
-	/**
-	 * Sentencia crear tabla de datos
-	 */
-	private final String TABLE_DATA = 
-		"CREATE TABLE mis_datos_data_(id_ INTEGER PRIMARY KEY AUTOINCREMENT, " +
-		"login_ TEXT, key_ TEXT, value_ TEXT, date_ LONG)";
 
-	
 	/**
-	 * Constructor
+	 * Instance of the DbManager
 	 */
-	public DbManager(Context context, String name, CursorFactory factory, int version) {
+	public static DbManager getInstance(Context context) {
+		DbManager db = new DbManager(context, DB_NAME, null, DB_VERSION);
+		return db;
+	}
+	
+
+	/**
+	 * Private constructor
+	 */
+	private DbManager(Context context, String name, CursorFactory factory, int version) {
 		super(context, name, factory, version);
 	}
 
@@ -43,7 +45,7 @@ public class DbManager extends SQLiteOpenHelper {
 	 */
 	public void onCreate(SQLiteDatabase db) {
 		db.execSQL(User.CREATE_TABLE);
-		db.execSQL(TABLE_DATA);
+		db.execSQL(Data.CREATE_TABLE);
 	}
 
 	/*
@@ -52,8 +54,12 @@ public class DbManager extends SQLiteOpenHelper {
 	 */
 	public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion){
 		if(oldVersion<newVersion){
+			//User
 			db.execSQL(User.DELETE_TABLE);
 			db.execSQL(User.CREATE_TABLE);
+			//Data
+			db.execSQL(Data.DELETE_TABLE);
+			db.execSQL(Data.CREATE_TABLE);
 		}
 	}
 

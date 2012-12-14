@@ -111,5 +111,13 @@ public class ControlLogin extends ControlUser {
 		}
 		return result;
 	}
+
+	/**
+	 * Reset form fields
+	 */
+	public void reset() {
+		txtUser.setText("");
+		txtPassword1.setText("");
+	}
 	
 }
