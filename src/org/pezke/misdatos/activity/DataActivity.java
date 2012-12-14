@@ -1,13 +1,20 @@
 package org.pezke.misdatos.activity;
 
 import java.util.Date;
+import java.util.List;
 
 import org.pezke.misdatos.R;
+import org.pezke.misdatos.dao.DataDao;
+import org.pezke.misdatos.dao.DbManager;
+import org.pezke.misdatos.model.Data;
 import org.pezke.misdatos.model.ListElement;
+import org.pezke.misdatos.util.CommonConstants;
 import org.pezke.misdatos.util.DateUtils;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -16,6 +23,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.ArrayAdapter;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -37,16 +45,34 @@ public class DataActivity extends Activity {
         String keyLastAccess = getString(R.string.label_lastAccess);
     	String keyNumAccess  = getString(R.string.label_numAccess);
     	
-    	datos = new ListElement[0];
-    	datos = new ListElement[25];
-        for (int i = 1; i <= 25; i++){
-        	ListElement item = new ListElement("Título " + i);
-        	item.setLastAccess(keyLastAccess + DateUtils.formatDateTime(new Date()));
-        	item.setNumAccess(keyNumAccess + i);
-			datos[i - 1] = item;
-        }
-                
-        MyDataAdapter adaptador = new MyDataAdapter(this);
+    	//Create the database
+		DbManager dbManager = DbManager.getInstance(this);
+		DataDao dataDao = new DataDao(dbManager);
+		
+		//Get the login
+		SharedPreferences preferences = 
+				getSharedPreferences(CommonConstants.DATA, Context.MODE_PRIVATE);
+		String login = preferences.getString(CommonConstants.LOGIN, "");
+		List<Data> list = dataDao.getByLogin(login);
+		if(list!=null){
+			datos = new ListElement[list.size()];
+			for (int i = 0; i < list.size(); i++){
+				Data data = list.get(i);
+	        	ListElement item = new ListElement(data.getKey());
+	        	item.setLastAccess(keyLastAccess + DateUtils.formatDateTime(new Date()));
+	        	item.setNumAccess(keyNumAccess + i);
+				datos[i - 1] = item;
+	        }
+		}else{
+			datos = new ListElement[0];
+		}
+		
+		if(datos.length != 0){
+			LinearLayout textNoData = (LinearLayout)findViewById(R.id.layout_nodata);
+			textNoData.setVisibility(View.INVISIBLE);
+		}
+    	
+    	MyDataAdapter adaptador = new MyDataAdapter(this);
 		ListView lstOpciones = (ListView) findViewById(R.id.CtlList);
 		lstOpciones.setAdapter(adaptador);
     }

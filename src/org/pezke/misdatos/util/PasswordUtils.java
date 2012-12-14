@@ -1,5 +1,6 @@
 package org.pezke.misdatos.util;
 
+import org.pezke.misdatos.model.Data;
 import org.pezke.misdatos.model.User;
 
 
@@ -20,6 +21,22 @@ public class PasswordUtils {
 	 */
 	public static Password encode(String password, String salt){
 		Password result = PasswordHasher.hash(password, salt);
+		return result;
+	}
+	
+	/**
+	 * Crypt the password
+	 */
+	public static Password crypt(User user, String text){
+		Password result = PasswordHasher.crypt(user, text);
+		return result;
+	}
+	
+	/**
+	 * Decrypt the password
+	 */
+	public static String decrypt(User user, Data data){
+		String result = PasswordHasher.decrypt(user, data);
 		return result;
 	}
 	

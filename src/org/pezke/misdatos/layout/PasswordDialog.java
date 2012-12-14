@@ -37,8 +37,8 @@ public class PasswordDialog extends DialogPreference {
         setDialogIcon(null);
         
         //Creating the dao
-        DbManager dbManager = new DbManager(context, DbManager.DB_NAME, null, DbManager.DB_VERSION);
-		userDao = new UserDao(dbManager);
+        DbManager dbManager = DbManager.getInstance(context);
+        userDao = new UserDao(dbManager);
 	}
 	
 

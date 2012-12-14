@@ -6,6 +6,23 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent" >
     
+	
+   	<LinearLayout
+   	    android:id="@+id/layout_nodata"
+   	    android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:layout_marginTop="10dp" >
+  
+		<TextView android:id="@+id/textNoData" 
+			android:layout_width="fill_parent" 
+			android:layout_height="wrap_content"
+			android:text="@string/label_noData" 
+			android:textStyle="bold" 
+			android:textSize="12dp" 
+			android:textColor="#ffffff" />
+	
+	</LinearLayout> 
+    
     <ListView
         android:id="@+id/CtlList"
         android:layout_width="fill_parent"

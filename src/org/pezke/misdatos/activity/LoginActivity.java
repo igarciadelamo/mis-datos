@@ -16,7 +16,6 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
 import android.view.KeyEvent;
-import android.view.Menu;
 
 public class LoginActivity extends Activity {
 
@@ -73,7 +72,7 @@ public class LoginActivity extends Activity {
 		});
 		
 		//Create the database
-		DbManager dbManager = new DbManager(this, DbManager.DB_NAME, null, DbManager.DB_VERSION);
+		DbManager dbManager = DbManager.getInstance(this);
 		UserDao userDao = new UserDao(dbManager);
 		controlLogin.setUserDao(userDao);
 	}
@@ -81,11 +80,11 @@ public class LoginActivity extends Activity {
 
 	/*
 	 * (non-Javadoc)
-	 * @see android.app.Activity#onCreateOptionsMenu(android.view.Menu)
+	 * @see android.app.Activity#onResume()
 	 */
-	public boolean onCreateOptionsMenu(Menu menu) {
-		getMenuInflater().inflate(R.menu.activity_login, menu);
-		return true;
+	protected void onResume() {
+		controlLogin.reset();
+		super.onResume();
 	}
 	
 	/*
