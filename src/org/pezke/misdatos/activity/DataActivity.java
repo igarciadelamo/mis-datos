@@ -12,6 +12,7 @@ import org.pezke.misdatos.util.CommonConstants;
 import org.pezke.misdatos.util.DateUtils;
 
 import android.app.Activity;
+import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -20,9 +21,13 @@ import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.view.Window;
+import android.view.WindowManager.LayoutParams;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -31,6 +36,13 @@ public class DataActivity extends Activity {
 
 	//DataList
 	private ListElement[] datos = null;
+	
+	//Dialog
+	private Dialog dialog = null;
+	
+	//DAO
+	DataDao dataDao = null;
+	
 	
     /*
      * (non-Javadoc)
@@ -41,15 +53,28 @@ public class DataActivity extends Activity {
         requestWindowFeature(Window.FEATURE_CUSTOM_TITLE);
         setContentView(R.layout.activity_data);
         getWindow().setFeatureInt(Window.FEATURE_CUSTOM_TITLE, R.layout.title_data);
-        
-        String keyLastAccess = getString(R.string.label_lastAccess);
-    	String keyNumAccess  = getString(R.string.label_numAccess);
-    	
+    
     	//Create the database
 		DbManager dbManager = DbManager.getInstance(this);
-		DataDao dataDao = new DataDao(dbManager);
-		
-		//Get the login
+		this.dataDao = new DataDao(dbManager);
+	
+		//List
+		calculateList();
+		 
+        //adapter
+    	MyDataAdapter adaptador = new MyDataAdapter(this);
+		ListView lstOpciones = (ListView) findViewById(R.id.CtlList);
+		lstOpciones.setAdapter(adaptador);
+    }
+
+    /**
+     * Compose the list
+     */
+	private void calculateList() {
+		String keyLastAccess = getString(R.string.label_lastAccess);
+    	String keyNumAccess  = getString(R.string.label_numAccess);
+    	
+    	//Get the login
 		SharedPreferences preferences = 
 				getSharedPreferences(CommonConstants.DATA, Context.MODE_PRIVATE);
 		String login = preferences.getString(CommonConstants.LOGIN, "");
@@ -71,11 +96,7 @@ public class DataActivity extends Activity {
 			LinearLayout textNoData = (LinearLayout)findViewById(R.id.layout_nodata);
 			textNoData.setVisibility(View.INVISIBLE);
 		}
-    	
-    	MyDataAdapter adaptador = new MyDataAdapter(this);
-		ListView lstOpciones = (ListView) findViewById(R.id.CtlList);
-		lstOpciones.setAdapter(adaptador);
-    }
+	}
     
     /**
      * Adapter for the data list
@@ -135,11 +156,8 @@ public class DataActivity extends Activity {
 			this.tvLastAccess.setText(data.getLastAccess());
 			this.tvNumAccess.setText(data.getNumAccess());
 		}
-		
-		
 	}
-    
-    
+   	
 	/*
 	 * (non-Javadoc)
 	 * @see android.app.Activity#onOptionsItemSelected(android.view.MenuItem)
@@ -150,8 +168,7 @@ public class DataActivity extends Activity {
 		switch (item.getItemId()) {
 
 		case R.id.menu_addElement:
-			System.err.println("Opcion 1 pulsada!");
-			//lblMensaje.setText("Opcion 1 pulsada!");
+			createDialog();
 			return true;
 
 		case R.id.menu_settings:
@@ -173,5 +190,56 @@ public class DataActivity extends Activity {
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.activity_data, menu);
         return true;
+    }
+    
+    
+    /**
+     * Create the dialog to add a new element to the list
+     */
+    private void createDialog(){
+    	
+    	//Create the dialog if it does not exist
+    	if(this.dialog == null){
+    		
+    		dialog = new Dialog(DataActivity.this);
+    		dialog.setContentView(R.layout.dialog_add);
+    		dialog.setTitle(R.string.label_addData);
+    		dialog.setCancelable(true);
+    		dialog.getWindow().getAttributes().width = LayoutParams.FILL_PARENT;
+    		
+    		//set up buttons
+	        Button cancel = (Button) dialog.findViewById(R.id.buttonAddCancel);
+	        cancel.setOnClickListener(new OnClickListener() {
+	        	/*
+	        	 * (non-Javadoc)
+	        	 * @see android.view.View.OnClickListener#onClick(android.view.View)
+	        	 */
+	            public void onClick(View v) {
+	                dialog.cancel();
+	            }
+	        });
+	        
+	        Button accept = (Button) dialog.findViewById(R.id.buttonAddOk);
+	        accept.setOnClickListener(new OnClickListener() {
+	        	/*
+	        	 * (non-Javadoc)
+	        	 * @see android.view.View.OnClickListener#onClick(android.view.View)
+	        	 */
+	            public void onClick(View v) {
+	            	
+	            	//input text
+	        		EditText txtName = (EditText) dialog.findViewById(R.id.txtDialogAddName);
+	            	EditText txtValue = (EditText) dialog.findViewById(R.id.txtDialogAddValue);
+	            	String name =  txtName.getText().toString();
+	            	String value =  txtValue.getText().toString();
+	        	
+	            	System.err.println(" name: " + name);
+	            	System.err.println(" value: " + value);
+	            }
+	        });
+    	}
+    	
+        //now that the dialog is set up, it's time to show it    
+        dialog.show();
     }
 }

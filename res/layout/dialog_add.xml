@@ -4,68 +4,40 @@
   xmlns:android="http://schemas.android.com/apk/res/android"
   android:layout_width="fill_parent"
   android:layout_height="wrap_content"
-  android:orientation="vertical"  
-  android:padding="10dip">
+  android:orientation="vertical"
+  android:background="#9998b1"
+  android:padding="5dp" >
   
-  	<ImageView
-        android:id="@+id/imageRegisterLogo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginBottom="20dip"
-        android:layout_marginTop="20dip"
-        android:contentDescription="@string/logo"
-        android:src="@drawable/candado" />
-    
-	<TextView android:id="@+id/txtViewRegister0" 
+  	<TextView android:id="@+id/txtViewAddName" 
 		android:layout_width="wrap_content" 
 		android:layout_height="wrap_content" 
-		android:text="@string/user" 
+		android:text="@string/name" 
 		android:textStyle="bold"
 		android:textColor="#000000" />
-		
-	<EditText android:id="@+id/txtRegisterUser"
-	    android:inputType="textNoSuggestions"
+	
+	<EditText android:id="@+id/txtDialogAddName"
+		android:inputType="textNoSuggestions"
 		android:layout_height="wrap_content" 
 		android:layout_width="fill_parent" />
 	
-	<TextView android:id="@+id/txtViewRegister1" 
+	<TextView android:id="@+id/txtViewAddValue" 
 		android:layout_width="wrap_content" 
 		android:layout_height="wrap_content" 
-		android:text="@string/password" 
+		android:text="@string/value" 
 		android:textStyle="bold"
 		android:textColor="#000000" />
 	
-	<EditText android:id="@+id/txtRegisterPassword1"
+	<EditText android:id="@+id/txtDialogAddValue"
 		android:inputType="textPassword"
 		android:layout_height="wrap_content" 
 		android:layout_width="fill_parent" />
 	
-	<TextView android:id="@+id/txtViewRegister2" 
-		android:layout_width="wrap_content" 
-		android:layout_height="wrap_content" 
-		android:text="@string/password_repeit" 
-		android:textStyle="bold"
-		android:textColor="#000000" />
-	
-	<EditText android:id="@+id/txtRegisterPassword2"
-		android:inputType="textPassword"
-		android:layout_height="wrap_content" 
-		android:layout_width="fill_parent" />
-	
-	<TextView android:id="@+id/labelRegisterMessage" 
-		android:layout_width="wrap_content" 
-		android:layout_height="wrap_content" 
-		android:paddingLeft="10dip" 
-		android:textStyle="bold" 
-		android:textColor="#FF0000" />
-			
 	<LinearLayout android:orientation="horizontal" 
 		android:layout_width="fill_parent"
   		android:layout_height="fill_parent"
-  		android:paddingTop="5dip" > 
+  		android:paddingTop="20dip" > 
 		
-	    <Button android:id="@+id/buttonRegister"
+	    <Button android:id="@+id/buttonAddOk"
 			android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:paddingLeft="30dp"
@@ -78,12 +50,12 @@
             android:layout_gravity="center_horizontal"
             android:layout_width="wrap_content"
 			android:text="@string/accept" />
-
-		<Button android:id="@+id/buttonBackToLogin"
+			
+		<Button android:id="@+id/buttonAddCancel"
 			android:layout_height="wrap_content"
             android:layout_margin="10dp"
-            android:paddingLeft="30dp"
-            android:paddingRight="30dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
             android:paddingTop="10dp"
             android:paddingBottom="10dp"
             android:textColor="@drawable/login_button_color"
@@ -91,7 +63,9 @@
             android:background="@drawable/login_button_bg"
             android:layout_gravity="center_horizontal"
             android:layout_width="wrap_content"
-			android:text="@string/backToLogin" />			
+			android:text="@string/cancel" />
+		
 	</LinearLayout>
 	
+		
 </LinearLayout>
