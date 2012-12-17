@@ -14,7 +14,7 @@ public class DbManager extends SQLiteOpenHelper {
 	/**
 	 * Version de la base de datos
 	 */
-	public final static int DB_VERSION	= 6;
+	public final static int DB_VERSION	= 8;
 	
 	
 	/**

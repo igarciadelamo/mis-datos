@@ -98,7 +98,7 @@ public class DataDao extends Dao {
 	/**
 	 * Create a new data in the database
 	 */
-	public void save(User user, String key, String value){
+	public Data save(User user, String key, String value){
 		
 		//Db Connector
 		SQLiteDatabase db = getDbWriter();
@@ -122,12 +122,16 @@ public class DataDao extends Dao {
 			//Close the connection
 			db.close();
 		}
+		
+		//Get the element
+		Data data = getByLoginAndKey(user.getLogin(), key);
+		return data;
 	}
 	
 	/**
 	 * Update the counter and the last access date for a existent data
 	 */
-	public void update(String login, String key){
+	public Data update(String login, String key){
 		
 		//Db Connector
 		Data data = getByLoginAndKey(login, key);
@@ -137,18 +141,38 @@ public class DataDao extends Dao {
 			//Getting information
 			Integer count = data.getCount() + 1;
 			Date lastAccess = new Date();
+			
+			data.setCount(count);
+			data.setLastAccessDate(lastAccess);
 						
 			//Insert the new register
 			ContentValues cv = new ContentValues();
-			cv.put(Data.COUNT, count);
-			cv.put(Data.LAST_ACCESS, lastAccess.getTime());
+			cv.put(Data.COUNT, data.getCount());
+			cv.put(Data.LAST_ACCESS, data.getLastAccessDate().getTime());
 			String[] args = new String[] {login, key};
 			db.update(Data.TABLE_NAME, cv, Data.WHERE_LOGIN_AND_KEY, args);
 			
 			//Close the connection
 			db.close();
 		}
+		
+		return data;
+	}
+
+	/**
+	 * Delete the specified data
+	 */
+	public void delete(String login, String key){
+		SQLiteDatabase db = getDbWriter();
+		if(db != null){
+			
+			//Delete in db
+			String[] args = new String[] {login, key};
+			db.delete(Data.TABLE_NAME, Data.WHERE_LOGIN_AND_KEY, args);
+			
+			//Close the connection
+			db.close();
+		}
 	}
 		
-	
 }
