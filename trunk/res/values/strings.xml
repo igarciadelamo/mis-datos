@@ -1,16 +1,20 @@
 <resources>
 
     <string name="app_name">Mis Datos</string>
+    <string name="title">Mis Datos</string>
     
-    <string name="enter">Entrar</string>
+   <string name="enter">Entrar</string>
     <string name="user">Usuario:</string>
     <string name="password">Contraseña:</string>
     <string name="logo">Logo Mis Datos</string>
     <string name="login">Login</string>
+    <string name="name">Nombre:</string>
+    <string name="value">Valor:</string>
     <string name="new_account">Crear cuenta</string>
     <string name="password_repeit">Repetir contraseña:</string>
-    <string name="register">Aceptar</string>
-    <string name="saveConfig">Guardar</string>
+    <string name="accept">Aceptar</string>
+    <string name="cancel">Cancelar</string>
+  	<string name="save">Guardar</string>
     <string name="backToLogin">Volver</string>
     <string name="backToData">Volver</string>
     
@@ -29,11 +33,11 @@
     <string name="menu_config_password">Cambiar contraseña</string>
     <string name="menu_config_password_desc">Desde esta opción se permite cambiar la contraseña de la cuenta</string>
     <string name="menu_addElement">Añadir un nuevo dato</string>
+    <string name="menu_about">Acerca de</string>
     
-    <string name="title">Mis Datos</string>
-    
-    <string name="label_noData">No se han encontrado datos. Puede añadir uno nuevo desde el menú.</string>
+    <string name="label_noData">No se han encontrado datos almacenados. Puede añadir uno nuevo desde el menú.</string>
     <string name="label_numAccess">Número de accesos: </string>
     <string name="label_lastAccess">Fecha último acceso: </string>
+	<string name="label_addData">Crear un nuevo dato</string>
 
 </resources>
