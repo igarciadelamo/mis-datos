@@ -40,8 +40,7 @@ public class ConfigActivity extends PreferenceActivity {
         SharedPreferences preferences = 
 			getSharedPreferences(CommonConstants.DATA, Context.MODE_PRIVATE);
 		String login = preferences.getString(CommonConstants.LOGIN, "");
-        System.err.println("*************************** " + login);
-        
+               
         PasswordDialog preference = (PasswordDialog) findPreference(CommonConstants.PASSWORD);
         preference.setLogin(login);
     }

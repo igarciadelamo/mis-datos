@@ -34,7 +34,7 @@ public final class PasswordHasher {
 	/**
 	 * Salt length
 	 */
-	public static final int SALT_LENGTH = 64;
+	public static final int SALT_LENGTH = 128;
 
 	/**
 	 * Key length
@@ -192,15 +192,13 @@ public final class PasswordHasher {
 		
 		String salt = user.getPassword();
 		String privateKey = user.getSalt();
-		
 		final byte[] saltBytes = Base64.decode(salt.getBytes(), Base64.DEFAULT);
 		
-		KeySpec keySpec = new PBEKeySpec(privateKey.toCharArray(), saltBytes, ITERATIONS, KEY_LENGTH);
-		SecretKeyFactory keyFactory = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA1");
+		KeySpec keySpec = new PBEKeySpec(privateKey.toCharArray(), saltBytes, ITERATIONS, SALT_LENGTH);
+		SecretKeyFactory keyFactory = SecretKeyFactory.getInstance("PBEWITHSHAAND128BITAES-CBC-BC");
 
-		byte[] keyBytes = keyFactory.generateSecret(keySpec).getEncoded();
-		SecretKey key = new SecretKeySpec(keyBytes, "AES");
-		return key;
+		SecretKey secret = keyFactory.generateSecret(keySpec);
+		return secret;
 	}
 	
 	
