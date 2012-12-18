@@ -190,11 +190,10 @@ public final class PasswordHasher {
 	private static SecretKey getSecretKey(final User user)
 			throws NoSuchAlgorithmException, InvalidKeySpecException {
 		
-		String salt = user.getPassword();
+		String salt = String.valueOf(user.getCreationDate().getTime());
 		String privateKey = user.getSalt();
-		final byte[] saltBytes = Base64.decode(salt.getBytes(), Base64.DEFAULT);
 		
-		KeySpec keySpec = new PBEKeySpec(privateKey.toCharArray(), saltBytes, ITERATIONS, SALT_LENGTH);
+		KeySpec keySpec = new PBEKeySpec(privateKey.toCharArray(), salt.getBytes(), ITERATIONS, SALT_LENGTH);
 		SecretKeyFactory keyFactory = SecretKeyFactory.getInstance("PBEWITHSHAAND128BITAES-CBC-BC");
 
 		SecretKey secret = keyFactory.generateSecret(keySpec);

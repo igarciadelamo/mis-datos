@@ -48,6 +48,7 @@ public class DataActivity extends Activity {
 	//Dialogs
 	private Dialog addDataDialog = null;
 	private Dialog viewDataDialog = null;
+	private Dialog aboutDialog = null;
 	
 	//DAO
 	private DbManager dbManager = null;
@@ -111,6 +112,10 @@ public class DataActivity extends Activity {
 		case R.id.menu_settings:
 			Intent intent = new Intent(DataActivity.this, ConfigActivity.class);
 			startActivity(intent);
+			return true;
+			
+		case R.id.menu_about:
+			createAboutDialog();
 			return true;
 
 		default:
@@ -188,7 +193,17 @@ public class DataActivity extends Activity {
 		}
 		
 		if(datos.size() != 0){
-			LinearLayout textNoData = (LinearLayout)findViewById(R.id.layout_nodata);
+			deleteWarning();
+		}
+	}
+
+
+	/**
+	 * Delete the warning
+	 */
+	private void deleteWarning() {
+		LinearLayout textNoData = (LinearLayout)findViewById(R.id.layout_nodata);
+		if(textNoData!=null){
 			textNoData.removeAllViews();
 		}
 	}
@@ -307,6 +322,39 @@ public class DataActivity extends Activity {
         addDataDialog.show();
     }
     
+    
+    /**
+     * Create the ABOUT dialog to show the app information
+     */
+    private void createAboutDialog(){
+    	
+    	//Create the dialog if it does not exist
+    	if(this.aboutDialog == null){
+	    	aboutDialog = new Dialog(DataActivity.this);
+	    	aboutDialog.setContentView(R.layout.dialog_about);
+	    	aboutDialog.setTitle(R.string.app_name);
+	    	aboutDialog.setCancelable(true);
+	    	aboutDialog.getWindow().getAttributes().width = LayoutParams.FILL_PARENT;
+	    		
+	    	//set up buttons
+		    Button cancel = (Button) aboutDialog.findViewById(R.id.buttonAboutCancel);
+		    cancel.setOnClickListener(new OnClickListener() {
+		        	/*
+		        	 * (non-Javadoc)
+		        	 * @see android.view.View.OnClickListener#onClick(android.view.View)
+		        	 */
+		            public void onClick(View v) {
+		            	//Close the dialog
+		            	aboutDialog.cancel();
+		            }
+		        });
+      
+    	} 
+    	
+        //now that the dialog is set up, it's time to show it    
+	    aboutDialog.show();
+    }
+    
     /**
      * Create the dialog to view the private data
      */
@@ -412,6 +460,10 @@ public class DataActivity extends Activity {
 		    	//Refresh the view
 		     	ListElement element = getListElement(data); 
 		    	datos.add(element);
+		    	if(datos.size() == 1){
+					deleteWarning();
+				}
+		    	
 		    	updateAdapter();
 		    	
 		    	//Message

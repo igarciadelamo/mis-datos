@@ -14,13 +14,13 @@ public class DbManager extends SQLiteOpenHelper {
 	/**
 	 * Version de la base de datos
 	 */
-	public final static int DB_VERSION	= 8;
+	public final static int DB_VERSION	= 1;
 	
 	
 	/**
 	 * Nombre de la base de datos
 	 */
-	public final static String DB_NAME = "misDatosDb" + DB_VERSION;
+	public final static String DB_NAME = "dbMD_";
 	
 
 	/**
