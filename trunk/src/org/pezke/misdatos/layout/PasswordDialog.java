@@ -32,8 +32,8 @@ public class PasswordDialog extends DialogPreference {
 	public PasswordDialog(Context context, AttributeSet attrs) {
 		super(context, attrs);
 		setDialogLayoutResource(R.layout.dialog_password);
-        setPositiveButtonText(android.R.string.ok);
-        setNegativeButtonText(android.R.string.cancel);
+        setPositiveButtonText(R.string.accept);
+        setNegativeButtonText(R.string.cancel);
         setDialogIcon(null);
         
         //Creating the dao

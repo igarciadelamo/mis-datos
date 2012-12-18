@@ -42,6 +42,14 @@
     <string name="menu_addElement">Añadir un nuevo dato</string>
     <string name="menu_about">Acerca de</string>
     <string name="menu_context">Seleccione una opción</string>
+   
+    <string name="about_version_name">Versión:</string>
+    <string name="about_version_value">1.0</string>
+    <string name="about_developer_name">Desarrollado por:</string>
+    <string name="about_developer_value">Isidro García del Amo</string>
+    <string name="about_contact_name">Contacto:</string>
+    <string name="about_contact_value">isidro.garcia@gmail.com</string>
+    
     
     <string name="label_noData">No se han encontrado datos almacenados. Puede añadir uno nuevo desde el menú.</string>
     <string name="label_numAccess">Número de accesos: </string>
