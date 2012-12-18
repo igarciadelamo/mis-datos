@@ -306,6 +306,9 @@ public class DataActivity extends Activity {
 	            	if(success){
                       	//Close the dialog
 	            		addDataDialog.cancel();
+	            	
+	            	}else{
+	            		txtName.requestFocus();
 	            	}
 	            }
 	        });

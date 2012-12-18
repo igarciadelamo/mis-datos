@@ -3,12 +3,11 @@ package org.pezke.misdatos.layout;
 import org.pezke.misdatos.dao.UserDao;
 
 import android.content.Context;
-import android.graphics.Color;
 import android.util.AttributeSet;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
-import android.widget.TextView;
+import android.widget.Toast;
 
 public abstract class ControlUser extends LinearLayout {
 
@@ -23,9 +22,6 @@ public abstract class ControlUser extends LinearLayout {
 	protected Button btnAccept;
 	protected Button btnBack;
 	
-	/** Text with the information for the user */
-	protected TextView message;
-
 	
 	//////////////////////////////////
 	// DAOs
@@ -73,25 +69,17 @@ public abstract class ControlUser extends LinearLayout {
 	}
 	
 	/**
-	 * Show the error message
+	 * Show the message
 	 */
-	public void setMessage(String text) {
-		message.setText(text);
+	public void setMessage(String message) {
+		Toast.makeText(getContext(), message, Toast.LENGTH_LONG).show();
 	}
 	
 	/**
-	 * Show the error messageuser
+	 * Show the message
 	 */
-	public void setMessage(int text) {
-		message.setText(text);
-	}
-	
-	/**
-	 * Show the info message
-	 */
-	public void setInfoMessage(int text) {
-		message.setTextColor(Color.BLUE);
-		message.setText(text);
+	public void setMessage(int message) {
+		Toast.makeText(getContext(), message, Toast.LENGTH_LONG).show();
 	}
 	
 	/**

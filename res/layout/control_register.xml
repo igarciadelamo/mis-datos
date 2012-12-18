@@ -17,7 +17,7 @@
         android:contentDescription="@string/logo"
         android:src="@drawable/candado" />
     
-	<TextView android:id="@+id/txtViewRegister0" 
+	<TextView
 		android:layout_width="wrap_content" 
 		android:layout_height="wrap_content" 
 		android:text="@string/user" 
@@ -29,7 +29,7 @@
 		android:layout_height="wrap_content" 
 		android:layout_width="fill_parent" />
 	
-	<TextView android:id="@+id/txtViewRegister1" 
+	<TextView
 		android:layout_width="wrap_content" 
 		android:layout_height="wrap_content" 
 		android:text="@string/password" 
@@ -41,7 +41,7 @@
 		android:layout_height="wrap_content" 
 		android:layout_width="fill_parent" />
 	
-	<TextView android:id="@+id/txtViewRegister2" 
+	<TextView
 		android:layout_width="wrap_content" 
 		android:layout_height="wrap_content" 
 		android:text="@string/password_repeit" 
@@ -53,7 +53,7 @@
 		android:layout_height="wrap_content" 
 		android:layout_width="fill_parent" />
 	
-	<TextView android:id="@+id/labelRegisterMessage" 
+	<TextView
 		android:layout_width="wrap_content" 
 		android:layout_height="wrap_content" 
 		android:paddingLeft="10dip" 

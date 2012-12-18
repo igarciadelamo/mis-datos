@@ -72,8 +72,8 @@ public class PasswordDialog extends DialogPreference {
 
 		case DialogInterface.BUTTON_NEGATIVE: // User clicked Cancel!
 			break;
-		}
-
+		}	
+		
 		super.onClick(dialog, which);
 	}
 	
@@ -89,19 +89,22 @@ public class PasswordDialog extends DialogPreference {
 	/**
 	 * Manage the change of the password
 	 */
-	private void controlChangePassword(String login, String password1, String password2) {
+	private boolean controlChangePassword(String login, String password1, String password2) {
+		boolean result = false;
 		boolean check = userDao.checkByLogin(login);
 		if(check){
 			check = userDao.checkPasswords(password1, password2);
 			if(check){
 				userDao.update(login, password1);
-				showMessage(R.string.success_register);
+				showMessage(R.string.success_config);
+				result = true;
 			}else{
-				showMessage(R.string.error_password_different);
+				showMessage(R.string.error_password);
 			}
 		}else{
-			showMessage(R.string.error_login_non_existent);
+			showMessage(R.string.error_general);
 		}
+		return result;
 	}
 
 

@@ -9,7 +9,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 
 public class ControlRegister extends ControlUser {
 
@@ -63,8 +62,7 @@ public class ControlRegister extends ControlUser {
 		txtPassword2 = (EditText) findViewById(R.id.txtRegisterPassword2);
 		btnAccept = (Button) findViewById(R.id.buttonRegister);
 		btnBack = (Button) findViewById(R.id.buttonBackToLogin);
-		message = (TextView) findViewById(R.id.labelRegisterMessage);
-
+	
 		// Create and manage events
 		manageEvents();
 	}
@@ -84,10 +82,13 @@ public class ControlRegister extends ControlUser {
 		btnAccept.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				manageRegister(
+				boolean success = manageRegister(
 						txtUser.getText().toString(), 
 						txtPassword1.getText().toString(),
 						txtPassword2.getText().toString());
+				if(success){
+					listener.back();
+				}
 			}
 		});
 		
@@ -104,19 +105,22 @@ public class ControlRegister extends ControlUser {
 	/**
 	 * Manage the registration process
 	 */
-	public void manageRegister(String login, String password1, String password2) {
+	public boolean manageRegister(String login, String password1, String password2) {
+		boolean success = false;
 		boolean check = checkLogin(login);
 		if(!check){
 			check = checkPasswords(password1, password2);
 			if(check){
 				addUser(login, password1);
-				setInfoMessage(R.string.success_register);
+				setMessage(R.string.success_register);
+				success = true;
 			}else{
-				setMessage(R.string.error_password_different);
+				setMessage(R.string.error_password);
 			}
 		}else{
 			setMessage(R.string.error_login_existent);
 		}
+		return success;
 	}
 	
 }
