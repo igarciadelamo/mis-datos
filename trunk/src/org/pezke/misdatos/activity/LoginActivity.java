@@ -16,7 +16,6 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
 import android.view.KeyEvent;
-import android.widget.Toast;
 
 public class LoginActivity extends Activity {
 
@@ -136,7 +135,6 @@ public class LoginActivity extends Activity {
 				 */
 				public void onClick(DialogInterface dialog, int which) {
 					// Logout
-					Toast.makeText(LoginActivity.this, "adkokodsakdsadsads", Toast.LENGTH_LONG).show();
 					finish();
 				}
 		};
