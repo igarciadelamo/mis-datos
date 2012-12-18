@@ -7,7 +7,6 @@ import org.pezke.misdatos.layout.ControlRegister;
 import org.pezke.misdatos.listener.BackListener;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
 
 public class RegisterActivity extends Activity {
@@ -34,8 +33,7 @@ public class RegisterActivity extends Activity {
 			 * @see org.pezke.misdatos.listener.RegisterListener#backToLogin()
 			 */
 			public void back() {
-				Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
-				startActivity(intent);
+				finish();
 			}
 		
 		});

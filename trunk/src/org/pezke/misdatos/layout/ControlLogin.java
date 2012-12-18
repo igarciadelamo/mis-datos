@@ -9,7 +9,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 
 public class ControlLogin extends ControlUser {
 
@@ -62,8 +61,7 @@ public class ControlLogin extends ControlUser {
 		txtPassword1 = (EditText) findViewById(R.id.txtLoginPassword);
 		btnAccept = (Button) findViewById(R.id.buttonLogin);
 		btnBack = (Button) findViewById(R.id.buttonNewAccount);
-		message = (TextView) findViewById(R.id.labelLoginMessage);
-
+	
 		// Create and manage events
 		manageEvents();
 	}
@@ -107,6 +105,7 @@ public class ControlLogin extends ControlUser {
 	private boolean manageLogin(String user, String password) {
 		boolean result = checkLogin(user, password);
 		if(!result){
+			txtUser.requestFocus();
 			setMessage(R.string.error_login_incorrect);
 		}
 		return result;

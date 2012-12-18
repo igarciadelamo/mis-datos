@@ -17,7 +17,7 @@
         android:contentDescription="@string/logo"
         android:src="@drawable/candado" />
     
-	<TextView android:id="@+id/txtViewLogin0" 
+	<TextView 
 		android:layout_width="wrap_content" 
 		android:layout_height="wrap_content" 
 		android:text="@string/user" 
@@ -29,7 +29,7 @@
 		android:layout_height="wrap_content" 
 		android:layout_width="fill_parent" />
 	
-	<TextView android:id="@+id/txtViewLogin1" 
+	<TextView
 		android:layout_width="wrap_content" 
 		android:layout_height="wrap_content" 
 		android:text="@string/password" 
@@ -40,14 +40,7 @@
 		android:inputType="textPassword"
 		android:layout_height="wrap_content" 
 		android:layout_width="fill_parent" />
-		
-	<TextView android:id="@+id/labelLoginMessage" 
-		android:layout_width="wrap_content" 
-		android:layout_height="wrap_content" 
-		android:paddingLeft="10dip" 
-		android:textStyle="bold" 
-		android:textColor="#FF0000"/>
-			
+				
 	<LinearLayout android:orientation="horizontal" 
 		android:layout_width="fill_parent"
   		android:layout_height="fill_parent"
