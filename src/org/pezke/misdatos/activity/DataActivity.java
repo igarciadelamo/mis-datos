@@ -61,6 +61,7 @@ public class DataActivity extends Activity {
      * (non-Javadoc)
      * @see android.app.Activity#onCreate(android.os.Bundle)
      */
+	@Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_CUSTOM_TITLE);
@@ -127,6 +128,7 @@ public class DataActivity extends Activity {
      * (non-Javadoc)
      * @see android.app.Activity#onCreateOptionsMenu(android.view.Menu)
      */
+	@Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.activity_data, menu);
         return true;
@@ -138,6 +140,7 @@ public class DataActivity extends Activity {
 	 * @see android.app.Activity#onCreateContextMenu(android.view.ContextMenu,
 	 * android.view.View, android.view.ContextMenu.ContextMenuInfo)
 	 */
+    @Override
 	public void onCreateContextMenu(ContextMenu menu, View v, ContextMenuInfo menuInfo) {
 		super.onCreateContextMenu(menu, v, menuInfo);
 		menu.setHeaderTitle(R.string.menu_context);
@@ -148,6 +151,7 @@ public class DataActivity extends Activity {
 	 * (non-Javadoc)
 	 * @see android.app.Activity#onContextItemSelected(android.view.MenuItem)
 	 */
+    @Override
 	public boolean onContextItemSelected(MenuItem item) {
 		AdapterContextMenuInfo info = (AdapterContextMenuInfo) item.getMenuInfo();
 
@@ -272,7 +276,7 @@ public class DataActivity extends Activity {
     		addDataDialog.setContentView(R.layout.dialog_add);
     		addDataDialog.setTitle(R.string.label_addData);
     		addDataDialog.setCancelable(true);
-    		addDataDialog.getWindow().getAttributes().width = LayoutParams.FILL_PARENT;
+    		addDataDialog.getWindow().getAttributes().width = LayoutParams.MATCH_PARENT;
     		
     		//set up buttons
 	        Button cancel = (Button) addDataDialog.findViewById(R.id.buttonAddCancel);
@@ -337,7 +341,7 @@ public class DataActivity extends Activity {
 	    	aboutDialog.setContentView(R.layout.dialog_about);
 	    	aboutDialog.setTitle(R.string.app_name);
 	    	aboutDialog.setCancelable(true);
-	    	aboutDialog.getWindow().getAttributes().width = LayoutParams.FILL_PARENT;
+	    	aboutDialog.getWindow().getAttributes().width = LayoutParams.MATCH_PARENT;
 	    		
 	    	//set up buttons
 		    Button cancel = (Button) aboutDialog.findViewById(R.id.buttonAboutCancel);
@@ -370,7 +374,7 @@ public class DataActivity extends Activity {
     		viewDataDialog.setContentView(R.layout.dialog_view);
     		viewDataDialog.setTitle(name);
     		viewDataDialog.setCancelable(true);
-    		viewDataDialog.getWindow().getAttributes().width = LayoutParams.FILL_PARENT;
+    		viewDataDialog.getWindow().getAttributes().width = LayoutParams.MATCH_PARENT;
     		
     		//set up buttons
 	        Button cancel = (Button) viewDataDialog.findViewById(R.id.buttonViewCancel);
@@ -384,8 +388,7 @@ public class DataActivity extends Activity {
 	            	viewDataDialog.cancel();
 	            }
 	        });
-	       
-    	}
+	   	}
     	
     	TextView txtName = (TextView) viewDataDialog.findViewById(R.id.txtViewDataName);
 		txtName.setText(text);
