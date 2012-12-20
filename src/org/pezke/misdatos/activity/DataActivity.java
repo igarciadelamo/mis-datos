@@ -63,10 +63,8 @@ public class DataActivity extends Activity {
 	@Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //requestWindowFeature(Window.FEATURE_CUSTOM_TITLE);
         setContentView(R.layout.activity_data);
-        //getWindow().setFeatureInt(Window.FEATURE_CUSTOM_TITLE, R.layout.title_data);
-    
+        
     	//Create the database
 		this.dbManager = DbManager.getInstance(this);
 		
@@ -389,6 +387,7 @@ public class DataActivity extends Activity {
 	        });
 	   	}
     	
+    	viewDataDialog.setTitle(name);
     	TextView txtName = (TextView) viewDataDialog.findViewById(R.id.txtViewDataName);
 		txtName.setText(text);
 		
