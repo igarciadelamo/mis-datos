@@ -6,7 +6,10 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent" >
     
-	
+    <include 
+    	android:layout_width="fill_parent" 
+    	layout="@layout/title_data" />
+    	
    	<LinearLayout
    	    android:id="@+id/layout_nodata"
    	    android:layout_width="fill_parent"
