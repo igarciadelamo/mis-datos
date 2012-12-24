@@ -127,7 +127,7 @@ public class DataActivity extends Activity {
      */
 	@Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.activity_data, menu);
+        getMenuInflater().inflate(R.menu.main_menu, menu);
         return true;
     }
     
