@@ -28,6 +28,6 @@
             android:background="@drawable/login_button_bg"
             android:layout_gravity="center_horizontal"
             android:layout_width="wrap_content"
-			android:text="@string/cancel" />
+			android:text="@string/accept" />
 		
 </LinearLayout>
