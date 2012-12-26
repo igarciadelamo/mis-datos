@@ -11,7 +11,7 @@
   <RelativeLayout android:orientation="horizontal" 
 		android:layout_width="fill_parent"
   		android:layout_height="fill_parent"
-  		android:paddingTop="20dip" > 
+  		android:paddingTop="10dip" > 
   
 	  	<TextView
 			android:layout_width="wrap_content" 
@@ -34,7 +34,7 @@
 	<RelativeLayout android:orientation="horizontal" 
 		android:layout_width="fill_parent"
   		android:layout_height="fill_parent"
-  		android:paddingTop="20dip" > 
+  		android:paddingTop="15dip" > 
   
 	  	<TextView 
 			android:layout_width="wrap_content" 
@@ -56,7 +56,7 @@
 	<RelativeLayout android:orientation="horizontal" 
 		android:layout_width="fill_parent"
   		android:layout_height="fill_parent"
-  		android:paddingTop="20dip" > 
+  		android:paddingTop="15dip" > 
   
 	  	<TextView 
 	  	    android:layout_width="wrap_content" 
