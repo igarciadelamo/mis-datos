@@ -15,13 +15,16 @@ import org.pezke.misdatos.util.DateUtils;
 import org.pezke.misdatos.util.PasswordUtils;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.ContextMenu;
 import android.view.ContextMenu.ContextMenuInfo;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -510,6 +513,114 @@ public class DataActivity extends Activity {
 	}
 	
 	
+	/*
+	 * (non-Javadoc)
+	 * @see android.app.Activity#onKeyDown(int, android.view.KeyEvent)
+	 */
+	public boolean onKeyDown(int keyCode, KeyEvent event) {
+		
+		//Press the back button
+		if (keyCode == KeyEvent.KEYCODE_BACK) {
+			
+			AlertDialog.Builder builder = createAlertDialog();
+			builder.show();
+						
+			// The event has already been processed
+			return true;
+		}
+		
+		// In other case, follow the chain events
+		return super.onKeyDown(keyCode, event);
+	}
+	
+	/**
+	 * Create alert to do the logout
+	 */
+	private AlertDialog.Builder createAlertDialog(){
+		AlertDialog.Builder result = new AlertDialog.Builder(this)
+		.setIcon(android.R.drawable.ic_dialog_alert)
+		.setTitle(R.string.back_message)
+		.setMessage(R.string.back_confirmation)
+		.setCancelable(false)
+		
+		//Key listener
+		.setOnKeyListener(createOnKeyListener())
+		
+		//Button cancel with listener
+		.setNegativeButton(R.string.cancel, createOnClickListenerCancel())
+		
+		//Button ok with listener
+		.setPositiveButton(R.string.accept, createOnClickListenerOk());
+				
+		return result;
+	}
+	
+	
+	/**
+	 * Create listener to cencel the dialog
+	 */
+	private DialogInterface.OnClickListener createOnClickListenerCancel(){
+		DialogInterface.OnClickListener result = 
+			new DialogInterface.OnClickListener() {
+			
+				/*
+				 * (non-Javadoc)
+				 * @see android.content.DialogInterface.OnClickListener#onClick(android.content.DialogInterface, int)
+				 */
+				public void onClick(DialogInterface dialog, int which) {
+					dialog.cancel();
+				}
+		};
+		
+		return result;
+	}
+	
+	
+	/**
+	 * Create key listener for the dialog
+	 */
+	private DialogInterface.OnKeyListener createOnKeyListener(){
+		DialogInterface.OnKeyListener result = 
+			new DialogInterface.OnKeyListener() {
+
+				/*
+				 * (non-Javadoc)
+				 * @see android.content.DialogInterface.OnKeyListener#onKey(android.content.DialogInterface, int, android.view.KeyEvent)
+				 */
+				public boolean onKey(DialogInterface dialog, int keyCode, KeyEvent event) {
+					if(keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_DOWN) {
+						dialog.cancel();
+						finish();
+					}
+					
+					return false;	
+				}
+		};
+		
+		return result;
+	}
+	
+	
+	/**
+	 * Create listener to finish the activity
+	 */
+	private DialogInterface.OnClickListener createOnClickListenerOk(){
+		DialogInterface.OnClickListener result = 
+			new DialogInterface.OnClickListener() {
+			
+				/*
+				 * (non-Javadoc)
+				 * @see android.content.DialogInterface.OnClickListener#onClick(android.content.DialogInterface, int)
+				 */
+				public void onClick(DialogInterface dialog, int which) {
+					// Logout
+					finish();
+				}
+		};
+		
+		return result;
+	}
+
     
     /**
      * Adapter for the data list
