@@ -1,0 +1,60 @@
+<resources>
+
+    <string name="app_name">Mis Datos</string>
+    <string name="title">Mis Datos</string>
+    
+    <string name="enter">Entrar</string>
+    <string name="user">Usuario:</string>
+    <string name="password">Contraseña:</string>
+    <string name="logo">Logo Mis Datos</string>
+    <string name="login">Login</string>
+    <string name="name">Nombre:</string>
+    <string name="value">Valor:</string>
+    <string name="new_account">Crear cuenta</string>
+    <string name="password_repeit">Repetir contraseña:</string>
+    <string name="accept">Aceptar</string>
+    <string name="cancel">Cancelar</string>
+    <string name="close">Cerrar</string>
+    <string name="view">Ver</string>
+    <string name="delete">Eliminar</string>
+  	<string name="save">Guardar</string>
+    <string name="backToLogin">Volver</string>
+    <string name="backToData">Volver</string>
+    
+    <string name="success_register">La cuenta se ha creado correctamente</string>
+    <string name="success_config">Contraseña actualizada correctamente</string>
+    <string name="success_add_data">Datos almacenados correctamente</string>
+    <string name="success_delete_data">Datos eliminados correctamente</string>
+    <string name="error_login_incorrect">Datos incorrectos. Vuelva a intentarlo.</string>
+    <string name="error_login_existent">Ya existe una cuenta con ese login.</string>
+    <string name="error_login_non_existent">No existe una cuenta con ese login.</string>
+    <string name="error_password">Las contraseñas introducidas deben ser iguales y no pueden ser una cadena vacía</string>
+    <string name="error_data_empty">Debe introducir datos tanto para el nombre como para el valor</string>
+    <string name="error_data_existent">Ya existe un dato con el mismo nombre</string>
+    <string name="error_general">Se ha producido un error durante esta operación.</string>
+    
+    <string name="back_message">Salir</string>
+    <string name="back_confirmation">¿Desea salir de la aplicación?</string>
+    
+    <string name="menu_settings">Configuración</string>
+    <string name="menu_config_account">Mi cuenta</string>
+    <string name="menu_config_password">Cambiar contraseña</string>
+    <string name="menu_config_password_desc">Desde esta opción se permite cambiar la contraseña de la cuenta</string>
+    <string name="menu_addElement">Añadir un nuevo dato</string>
+    <string name="menu_about">Acerca de</string>
+    <string name="menu_context">Seleccione una opción</string>
+   
+    <string name="about_version_name">Versión:</string>
+    <string name="about_version_value">1.0</string>
+    <string name="about_developer_name">Desarrollado por:</string>
+    <string name="about_developer_value">Isidro García</string>
+    <string name="about_contact_name">Contacto:</string>
+    <string name="about_contact_value">isidro.garcia@gmail.com</string>
+    
+    
+    <string name="label_noData">No se han encontrado datos almacenados. Puede añadir uno nuevo desde el menú.</string>
+    <string name="label_numAccess">Número de accesos: </string>
+    <string name="label_lastAccess">Fecha último acceso: </string>
+	<string name="label_addData">Crear un nuevo dato</string>
+	
+</resources>
