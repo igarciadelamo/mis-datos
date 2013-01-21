@@ -30,7 +30,7 @@
     <string name="error_login_non_existent">An account with this login does not exist.</string>
     <string name="error_password">The passwords must be identical and not empty</string>
     <string name="error_data_empty">The name and the value of the data can not be empty</string>
-    <string name="error_data_existent">Data already exists with the same name</string>
+    <string name="error_data_existent">An existent data has been found with the same name</string>
     <string name="error_general">There was an error during the execution. Please, try again.</string>
     
     <string name="back_message">Exit</string>
@@ -52,7 +52,7 @@
     <string name="about_contact_value">isidro.garcia@gmail.com</string>
     
     
-    <string name="label_noData">Did not match any stored data. You can add a new one from the menu.</string>
+    <string name="label_noData">There are no stored data. You can add a new one from the menu.</string>
     <string name="label_numAccess">Access number: </string>
     <string name="label_lastAccess">Last access date: </string>
 	<string name="label_addData">Add a new data</string>
