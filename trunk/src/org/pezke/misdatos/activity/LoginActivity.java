@@ -86,6 +86,7 @@ public class LoginActivity extends Activity {
 		reset();
 		super.onResume();
 	}
+		
 	
 	/*
 	 * (non-Javadoc)

@@ -59,6 +59,13 @@ public class DataActivity extends Activity {
 	private MyDataAdapter adapter = null;
 	
 	
+	@Override
+	protected void onPause(){
+        super.onPause();
+        finish();      //termina la actividad 
+}
+	
+	
     /*
      * (non-Javadoc)
      * @see android.app.Activity#onCreate(android.os.Bundle)
