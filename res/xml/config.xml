@@ -6,6 +6,12 @@
             android:key="preferencePassword"
             android:summary="@string/menu_config_password_desc"
             android:title="@string/menu_config_password" />
+        
+         <org.pezke.misdatos.layout.DeleteAccountDialog
+            android:key="preferenceDeleteAccount"
+            android:summary="@string/menu_config_delete_account_desc"
+            android:title="@string/menu_config_delete_account" />
+    
     </PreferenceCategory>
-   
+       
 </PreferenceScreen>

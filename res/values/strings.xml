@@ -43,9 +43,14 @@
     <string name="menu_addElement">Añadir un nuevo dato</string>
     <string name="menu_about">Acerca de</string>
     <string name="menu_context">Seleccione una opción</string>
-   
+    <string name="menu_config_delete_account">Eliminar cuenta</string>
+    <string name="menu_config_delete_account_desc">Desde esta opción se permite eliminar la cuenta actual</string>
+
+    <string name="delete_account_label">¿Desea eliminar la cuenta y todos los datos almacenados en ella? No podrá recuperar estos datos en el futuro.</string>
+    <string name="delete_account_text">La cuenta ha sido eliminada correctamente</string>
+        
     <string name="about_version_name">Versión:</string>
-    <string name="about_version_value">1.0</string>
+    <string name="about_version_value">1.1</string>
     <string name="about_developer_name">Desarrollado por:</string>
     <string name="about_developer_value">Isidro García</string>
     <string name="about_contact_name">Contacto:</string>

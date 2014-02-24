@@ -43,9 +43,14 @@
     <string name="menu_addElement">Add a new data</string>
     <string name="menu_about">About</string>
     <string name="menu_context">Select an option</string>
-   
+    <string name="menu_config_delete_account">Delete account</string>
+    <string name="menu_config_delete_account_desc">Delete all your data and your account from this option</string>
+    
+    <string name="delete_account_label">Do you want to delete the account and all your data? The action cannot be reversed.</string>
+    <string name="delete_account_text">The account has been deleted successfully</string>
+  
     <string name="about_version_name">Version:</string>
-    <string name="about_version_value">1.0</string>
+    <string name="about_version_value">1.1</string>
     <string name="about_developer_name">Developed by:</string>
     <string name="about_developer_value">Isidro García</string>
     <string name="about_contact_name">Contact:</string>

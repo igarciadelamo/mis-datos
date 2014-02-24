@@ -7,4 +7,9 @@ public class CommonConstants {
 	
 	public static final String PASSWORD = "preferencePassword";
 	
+	public static final String DELETE_ACCOUNT = "preferenceDeleteAccount";
+	
+	public static final int REQUEST_CONFIG_ACTION 	= 200;
+	public static final int RESULT_DELETE_ACCOUNT   = 201;
+	
 }

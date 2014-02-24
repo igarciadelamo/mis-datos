@@ -52,6 +52,9 @@ public class DataActivity extends Activity {
 	private Dialog viewDataDialog = null;
 	private Dialog aboutDialog = null;
 	
+	//Flow control
+	private boolean config = false;
+	
 	//DAO
 	private DbManager dbManager = null;
 	
@@ -62,9 +65,34 @@ public class DataActivity extends Activity {
 	@Override
 	protected void onPause(){
         super.onPause();
-        finish();      //termina la actividad 
-}
+    
+        if(!config){
+        	finish();      //termina la actividad 
+        }
+	}
 	
+	@Override
+	protected void onResume(){
+		super.onResume();
+		config = false;
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * @see android.app.Activity#onActivityResult(int, int, android.content.Intent)
+	 */
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		super.onActivityResult(requestCode, resultCode, data);
+		if(requestCode == CommonConstants.REQUEST_CONFIG_ACTION &&
+				resultCode == CommonConstants.RESULT_DELETE_ACCOUNT){
+			Intent intent = new Intent(DataActivity.this, LoginActivity.class);
+			startActivity(intent);
+			
+			showMessage(R.string.delete_account_text);
+			finish();
+		}
+	}
 	
     /*
      * (non-Javadoc)
@@ -119,7 +147,8 @@ public class DataActivity extends Activity {
 
 		case R.id.menu_settings:
 			Intent intent = new Intent(DataActivity.this, ConfigActivity.class);
-			startActivity(intent);
+			startActivityForResult(intent, CommonConstants.REQUEST_CONFIG_ACTION);
+			config = true;
 			return true;
 			
 		case R.id.menu_about:
