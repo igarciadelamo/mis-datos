@@ -136,4 +136,20 @@ public class UserDao extends Dao {
 		return result;
 	}
 	
+	/**
+	 * Delete the user row
+	 */
+	public void delete(String login){
+		SQLiteDatabase db = getDbWriter();
+		if(db != null){
+			
+			//Delete in db
+			String[] args = new String[] {login};
+			db.delete(User.TABLE_NAME, User.WHERE_LOGIN, args);
+			
+			//Close the connection
+			db.close();
+		}
+	}
+	
 }
