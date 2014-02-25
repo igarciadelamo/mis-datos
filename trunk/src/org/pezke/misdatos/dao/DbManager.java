@@ -53,14 +53,14 @@ public class DbManager extends SQLiteOpenHelper {
 	 * @see android.database.sqlite.SQLiteOpenHelper#onUpgrade(android.database.sqlite.SQLiteDatabase, int, int)
 	 */
 	public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion){
-		if(oldVersion<newVersion){
+		//if(oldVersion<newVersion){
 			//User
-			db.execSQL(User.DELETE_TABLE);
-			db.execSQL(User.CREATE_TABLE);
+			//db.execSQL(User.DELETE_TABLE);
+			//db.execSQL(User.CREATE_TABLE);
 			//Data
-			db.execSQL(Data.DELETE_TABLE);
-			db.execSQL(Data.CREATE_TABLE);
-		}
+			//db.execSQL(Data.DELETE_TABLE);
+			//db.execSQL(Data.CREATE_TABLE);
+		//}
 	}
 
 }
