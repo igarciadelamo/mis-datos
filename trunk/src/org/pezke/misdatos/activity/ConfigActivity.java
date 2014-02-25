@@ -12,7 +12,6 @@ import org.pezke.misdatos.model.Data;
 import org.pezke.misdatos.util.CommonConstants;
 
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceActivity;
@@ -35,6 +34,7 @@ public class ConfigActivity extends PreferenceActivity {
 	 * 
 	 * @see android.app.Activity#onCreate(android.os.Bundle)
 	 */
+	@SuppressWarnings("deprecation")
 	public void onCreate(Bundle savedInstanceState) {
 
 		super.onCreate(savedInstanceState);
@@ -57,6 +57,17 @@ public class ConfigActivity extends PreferenceActivity {
 		deleteAccount.setCallbackActivity(this);
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * @see android.app.Activity#onPause()
+	 */
+	@Override
+	protected void onPause() {
+		super.onPause();
+		setResult(CommonConstants.RESULT_PAUSED_CONFIGURATION);
+		finish();
+	}
+	
 	/**
 	 * Create the new user
 	 */

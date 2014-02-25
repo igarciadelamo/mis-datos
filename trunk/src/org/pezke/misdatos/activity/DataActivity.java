@@ -84,13 +84,20 @@ public class DataActivity extends Activity {
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		super.onActivityResult(requestCode, resultCode, data);
-		if(requestCode == CommonConstants.REQUEST_CONFIG_ACTION &&
-				resultCode == CommonConstants.RESULT_DELETE_ACCOUNT){
-			Intent intent = new Intent(DataActivity.this, LoginActivity.class);
-			startActivity(intent);
+	
+		if(requestCode == CommonConstants.REQUEST_CONFIG_ACTION){
+		
+			if(resultCode == CommonConstants.RESULT_DELETE_ACCOUNT){
+				Intent intent = new Intent(DataActivity.this, LoginActivity.class);
+				startActivity(intent);
+				showMessage(R.string.delete_account_text);
+				finish();
 			
-			showMessage(R.string.delete_account_text);
-			finish();
+			} else if(resultCode == CommonConstants.RESULT_PAUSED_CONFIGURATION){
+				Intent intent = new Intent(DataActivity.this, LoginActivity.class);
+				startActivity(intent);
+				finish();
+			}
 		}
 	}
 	
