@@ -1,0 +1,65 @@
+<resources>
+
+    <string name="app_name">Mis Datos</string>
+    <string name="title">Mis Datos</string>
+    
+    <string name="enter">Enter</string>
+    <string name="user">Login:</string>
+    <string name="password">Password:</string>
+    <string name="logo">Logo Mis Datos</string>
+    <string name="login">Login</string>
+    <string name="name">Name:</string>
+    <string name="value">Value:</string>
+    <string name="new_account">Sign up</string>
+    <string name="password_repeit">Repeat password:</string>
+    <string name="accept">Accept</string>
+    <string name="cancel">Cancel</string>
+    <string name="close">Close</string>
+    <string name="view">View</string>
+    <string name="delete">Delete</string>
+  	<string name="save">Save</string>
+    <string name="backToLogin">Back</string>
+    <string name="backToData">Back</string>
+    
+    <string name="success_register">The account has been created</string>
+    <string name="success_config">The password has been updated</string>
+    <string name="success_add_data">The data has been created</string>
+    <string name="success_delete_data">The data has been deleted</string>
+    <string name="error_login_incorrect">Login or password are not correct. Please, try again.</string>
+    <string name="error_login_existent">An account with the same login already exists.</string>
+    <string name="error_login_non_existent">An account with this login does not exist.</string>
+    <string name="error_password">The passwords must be identical and not empty</string>
+    <string name="error_data_empty">The name and the value of the data can not be empty</string>
+    <string name="error_data_existent">An existent data has been found with the same name</string>
+    <string name="error_general">There was an error during the execution. Please, try again.</string>
+    
+    <string name="back_message">Exit</string>
+    <string name="back_confirmation">Do you want to exit the application?</string>
+    
+    <string name="menu_settings">Configuration</string>
+    <string name="menu_config_account">My account</string>
+    <string name="menu_config_password">Change password</string>
+    <string name="menu_config_password_desc">Change the password of your account from this option</string>
+    <string name="menu_addElement">Add a new data</string>
+    <string name="menu_about">About</string>
+    <string name="menu_context">Select an option</string>
+    <string name="menu_config_delete_account">Delete account</string>
+    <string name="menu_config_delete_account_desc">Delete all your data and your account from this option</string>
+    
+    <string name="delete_account_label">Do you want to delete the account and all your data? The action cannot be reversed.</string>
+    <string name="delete_account_text">The account has been deleted successfully</string>
+  
+    <string name="about_version_name">Version:</string>
+    <string name="about_version_value">1.1</string>
+    <string name="about_developer_name">Developed by:</string>
+    <string name="about_developer_value">Isidro García</string>
+    <string name="about_contact_name">Contact:</string>
+    <string name="about_contact_value">isidro.garcia@gmail.com</string>
+    
+    
+    <string name="label_noData">There are no stored data. You can add a new one from the menu.</string>
+    <string name="label_numAccess">Access number: </string>
+    <string name="label_lastAccess">Last access date: </string>
+	<string name="label_addData">Add a new data</string>
+	
+</resources>
