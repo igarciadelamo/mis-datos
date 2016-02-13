@@ -1,0 +1,1 @@
+Android application for managing your passwords and private information
